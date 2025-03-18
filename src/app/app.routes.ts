@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { logoutActiveGuard } from './shared/guards/logout-active.guard';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,13 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'auth/login',
     pathMatch: 'full',
+  },
+  {
+    path: 'auth',
+    loadChildren: () => 
+      import('./auth/auth.routes').then((m) => m.authRoutes),
+    canActivate: [logoutActiveGuard]
   },
 ];
