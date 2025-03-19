@@ -8,7 +8,7 @@ export interface Usuari {
     imatge: string;
     lat: number;
     lng: number;
-    adresa: number;
+    adresa?: number;
 }
 
 
