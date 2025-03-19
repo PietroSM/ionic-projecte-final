@@ -8,7 +8,7 @@
   <form 
     action="#"
     #formLogin="ngForm"
-    (ngSumbit)="login()"
+    (ngSubmit)="login()"
     [formGroup]="newLogin"
     id="form-login"
     role="form"
@@ -37,13 +37,16 @@
     </ion-list>
   
     <ion-grid>
-      <ion-col>
-        <ion-button
-          type="Sumbit"
-          color="primary"
-          [disabled]="newLogin.invalid"
-        >Iniciar Sessió</ion-button>
-      </ion-col>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            type="Submit"
+            [disabled]="newLogin.invalid"
+          >login</ion-button>  
+        </ion-col>
+
+
+      </ion-row>
     </ion-grid>
 
   </form>

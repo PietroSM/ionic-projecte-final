@@ -1,3 +1,4 @@
+import { Producte } from "./producte";
 import { Usuari } from "./usuari";
 
 export interface TokenResponse {
@@ -9,3 +10,6 @@ export interface SingleUsuariResponse {
     usuari: Usuari;
 }
 
+export interface SingleProducteResponse {
+    producte: Producte;
+}

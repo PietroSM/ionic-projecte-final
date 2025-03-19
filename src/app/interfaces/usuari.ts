@@ -13,7 +13,7 @@ export interface Usuari {
 
 
 export interface UsuariLogin {
-    email: string;
+    alies: string;
     contrasenya: string;
     lat?: number;
     lng?: number;

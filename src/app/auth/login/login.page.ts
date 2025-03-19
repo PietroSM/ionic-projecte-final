@@ -5,15 +5,17 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar, IonList, IonItem, IonInput, IonGrid, IonButton, IonCol, IonTabButton } from '@ionic/angular/standalone';
+  IonToolbar, IonList, IonItem, IonInput, IonGrid, IonButton, IonCol, IonTabButton, IonRow } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
+import { AuthService } from 'src/app/services/auth.service';
+import { UsuariLogin } from 'src/app/interfaces/usuari';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonCol, IonButton, IonGrid, IonInput, IonItem, IonList, 
+  imports: [IonRow, IonCol, IonButton, IonGrid, IonInput, IonItem, IonList, 
     IonContent,
     IonHeader,
     IonTitle,
@@ -27,6 +29,8 @@ export class LoginPage {
 
   #fb = inject(NonNullableFormBuilder);
   coords = signal<[number, number]>([0, 0]);
+  #authService = inject(AuthService);
+  
 
   newLogin = this.#fb.group({
     alies: ['', [Validators.minLength(4), Validators.required]],
@@ -35,8 +39,6 @@ export class LoginPage {
 
   constructor() {
     this.getLocation();
-
-    
   }
 
 
@@ -55,6 +57,24 @@ export class LoginPage {
 
 
   login(){
+
+    const newLogin : UsuariLogin = {
+      alies: this.newLogin.getRawValue().alies,
+      contrasenya: this.newLogin.getRawValue().contrasenya,
+      lat: this.coords()[0],
+      lng: this.coords()[1]
+    };
+
+
+    this.#authService.login(newLogin)
+      .subscribe({
+        next: () => {
+          console.log("piola");
+        },
+        error: () => {
+          console.log("fatal");
+        }
+      });
 
   }
 }
