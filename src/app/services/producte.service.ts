@@ -8,7 +8,7 @@ import { SingleProducteResponse } from '../interfaces/respostes';
   providedIn: 'root'
 })
 export class ProducteService {
-  #productesURL = 'productes';
+  #productesURL = 'producte';
   #http = inject(HttpClient);
 
 

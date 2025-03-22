@@ -5,8 +5,13 @@ import { loginActiveGuard } from './shared/guards/login-active.guard';
 export const routes: Routes = [
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-    canActivate: [loginActiveGuard]
+    loadComponent: () => 
+      import('./home/home.page')
+      .then((m) => m.HomePage),
+    canActivate: [loginActiveGuard],
+    loadChildren: () =>
+      import('./home/homeTab.routes')
+      .then((m) => m.homeTabRoutes),
   },
   {
     path: '',

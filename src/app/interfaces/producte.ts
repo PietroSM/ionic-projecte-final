@@ -3,7 +3,7 @@ import { Usuari } from "./usuari";
 export interface InsertarProducte {
     nom: string;
     stock: number;
-    preu: string;
+    preu: number;
     imatge: string;
     lat: number;
     lng: number;
