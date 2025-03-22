@@ -24,4 +24,8 @@ export const routes: Routes = [
       import('./auth/auth.routes').then((m) => m.authRoutes),
     canActivate: [logoutActiveGuard]
   },
+  {
+    path: 'producte-card',
+    loadComponent: () => import('./cards/producte-card/producte-card.page').then( m => m.ProducteCardPage)
+  },
 ];

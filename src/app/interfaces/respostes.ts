@@ -13,3 +13,8 @@ export interface SingleUsuariResponse {
 export interface SingleProducteResponse {
     producte: Producte;
 }
+
+
+export interface ProductesResponse {
+    productes: Producte[];
+}
