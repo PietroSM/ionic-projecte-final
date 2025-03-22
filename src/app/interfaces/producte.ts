@@ -18,6 +18,6 @@ export interface InsertarProducte {
 export interface Producte extends InsertarProducte {
     id: number;
     client: Usuari;
-    distancia: number;
+    distancia?: number;
     propietat: boolean;
 }
