@@ -3,6 +3,13 @@ import { loginActiveGuard } from "../shared/guards/login-active.guard";
 
 export const homeTabRoutes: Routes = [
     {
+        path: 'inici',
+        loadComponent: () =>
+            import('./inici-producte/inici-producte.page')
+            .then((m) => m.IniciProductePage),
+        canActivate: [loginActiveGuard]
+    },
+    {
         path: 'afegir',
         loadComponent: () =>
             import('./afegir-producte/afegir-producte.page')
@@ -10,10 +17,8 @@ export const homeTabRoutes: Routes = [
         canActivate: [loginActiveGuard]
     },
     {
-        path: 'inici',
-        loadComponent: () =>
-            import('./inici-producte/inici-producte.page')
-            .then((m) => m.IniciProductePage),
-        canActivate: [loginActiveGuard]
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'inici',
     },
 ]
