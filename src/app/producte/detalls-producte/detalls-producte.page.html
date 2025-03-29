@@ -1,13 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>detalls-producte</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="auth/login"></ion-back-button>
+    </ion-buttons>    
+    <!-- <ion-title slot="end"></ion-title> -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/images/logo_taronja.svg" class="imatge-top"></ion-img>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
+
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalls-producte</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-card class="ion-card-img">
+    <img [src]="producte()?.imatge" alt="Imagen de ejemplo" class="imatge-producte">
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{producte()?.nom}}</ion-card-title>
+      <ion-card-subtitle>Stock: {{producte()?.stock}} Kg</ion-card-subtitle>
+      <ion-card-subtitle>Preu: {{producte()?.preu}} €/Kg</ion-card-subtitle>
+      <ion-card-subtitle>Ubicació: Cartago </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
 </ion-content>

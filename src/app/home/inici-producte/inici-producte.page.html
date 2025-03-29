@@ -2,7 +2,17 @@
 
 <ion-content [fullscreen]="true">
 
-  @for (producte of productes(); track producte._id){
+
+  <ion-searchbar
+    debounce="500"
+    [(ngModel)]="search"
+    (ionInput)="filterItems()"
+  >
+  </ion-searchbar>
+
+
+
+  @for (producte of productes(); track producte.id){
     <app-producte-card
     [producte]="producte">
 

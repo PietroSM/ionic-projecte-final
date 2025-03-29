@@ -5,24 +5,26 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar, IonList, IonItem, IonInput, IonGrid, IonButton, IonCol, IonTabButton, IonRow } from '@ionic/angular/standalone';
+  IonToolbar,NavController, IonList, IonItem, IonInput, IonGrid, IonButton, IonCol, IonTabButton, IonRow, IonImg } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuariLogin } from 'src/app/interfaces/usuari';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonRow, IonCol, IonButton, IonGrid, IonInput, IonItem, IonList, 
+  imports: [IonImg, IonRow, IonCol, IonButton, IonGrid, IonInput, IonItem, IonList, 
     IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
 })
 export class LoginPage {
@@ -30,6 +32,8 @@ export class LoginPage {
   #fb = inject(NonNullableFormBuilder);
   coords = signal<[number, number]>([0, 0]);
   #authService = inject(AuthService);
+  #nav = inject(NavController);
+
   
 
   newLogin = this.#fb.group({
@@ -69,7 +73,7 @@ export class LoginPage {
     this.#authService.login(newLogin)
       .subscribe({
         next: () => {
-          console.log("piola");
+          this.#nav.navigateRoot(['/home/inici']);
         },
         error: () => {
           console.log("fatal");

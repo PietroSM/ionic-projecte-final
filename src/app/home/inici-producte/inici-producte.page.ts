@@ -1,7 +1,7 @@
 import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar } from '@ionic/angular/standalone';
 import { Producte } from 'src/app/interfaces/producte';
 import { ProducteService } from 'src/app/services/producte.service';
 import { ProducteCardPage } from "../../producte/producte-card/producte-card.page";
@@ -11,13 +11,14 @@ import { ProducteCardPage } from "../../producte/producte-card/producte-card.pag
   templateUrl: './inici-producte.page.html',
   styleUrls: ['./inici-producte.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
+  imports: [IonSearchbar, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
 })
 export class IniciProductePage {
 
   productes = signal<Producte[]>([]);
   #productesService = inject(ProducteService);
 
+  search = '';
 
 
   constructor(){
@@ -30,6 +31,11 @@ export class IniciProductePage {
     });
 
 
+  }
+
+
+  filterItems(){
+    
   }
 
 

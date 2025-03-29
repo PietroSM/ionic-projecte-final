@@ -1,146 +1,157 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>afegir Producte</ion-title>
+  <ion-toolbar>  
+    <ion-title slot="end">WALLA-ADD</ion-title>
+    <ion-buttons slot="end">
+      <ion-img src="assets/images/logo_taronja.svg" class="imatge-top"></ion-img>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <form 
-    action="#"
-    #formProducte="ngForm"
-    (ngSubmit)="afegirProducte()"
-    [formGroup]="newProducte"
-    id="form-producte"
-    role="form"
-  >
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col size="12" size-md="6" class="ion-text-center">
 
-  <ion-list>
-    <ion-item>
-      <ion-input
-        name="nom"
-        label="Nom"
-        labelPlacement="floating"
-        type="text"
-        id="nom"
-        formControlName="nom"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input
-        name="stock"
-        label="Sotck"
-        labelPlacement="floating"
-        type="number"
-        id="stock"
-        formControlName="stock"
-      ></ion-input>
-    </ion-item>
+      <form 
+        action="#"
+        #formProducte="ngForm"
+        (ngSubmit)="afegirProducte()"
+        [formGroup]="newProducte"
+        id="form-producte"
+        role="form"
+      >
     
-    <ion-item>
-      <ion-input
-        name="preu"
-        label="Preu"
-        labelPlacement="floating"
-        type="number"
-        id="preu"
-        formControlName="preu"
-      ></ion-input>
-    </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-input
+            name="nom"
+            label="Nom"
+            labelPlacement="floating"
+            type="text"
+            id="nom"
+            formControlName="nom"
+          ></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input
+            name="stock"
+            label="Sotck"
+            labelPlacement="floating"
+            type="number"
+            id="stock"
+            formControlName="stock"
+          ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input
+            name="preu"
+            label="Preu"
+            labelPlacement="floating"
+            type="number"
+            id="preu"
+            formControlName="preu"
+          ></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input
+            name="lat"
+            label="Latitude"
+            labelPlacement="floating"
+            readonly="true"
+            formControlName="lat"
+          ></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input
+            name="lng"
+            label="Longitude"
+            labelPlacement="floating"
+            readonly="true"
+            formControlName="lng"
+          ></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <label for="">Enviament </label>
+          <ion-checkbox
+          name="enviament"
+          formControlName="enviament"
+          >
+          </ion-checkbox>
+        </ion-item>
+    
+        <ion-item>
+          <label for="">Recogida </label>
+          <ion-checkbox
+          name="recogida"
+          formControlName="recogida"
+          >
+          </ion-checkbox>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input
+            name="temporada"
+            label="Temporada"
+            labelPlacement="floating"
+            type="text"
+            id="temporada"
+            formControlName="temporada"
+          ></ion-input>
+        </ion-item>
+    
+    
+        <ion-item>
+          <ion-input
+            name="tipus"
+            label="Tipus"
+            labelPlacement="floating"
+            type="text"
+            id="tipus"
+            formControlName="tipus"
+          ></ion-input>
+        </ion-item>
+    
+  
+          <ion-button color="secondary" (click)="takePhoto()">
+            <ion-icon name="camera" slot="start"></ion-icon>
+            Càmera
+          </ion-button>
+          <ion-button color="tertiary" (click)="pickFromGallery()">
+            <ion-icon name="images" slot="start"></ion-icon>
+            Galeria
+          </ion-button>
 
-    <ion-item>
-      <ion-input
-        name="lat"
-        label="Latitude"
-        labelPlacement="floating"
-        readonly="true"
-        formControlName="lat"
-      ></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-input
-        name="lng"
-        label="Longitude"
-        labelPlacement="floating"
-        readonly="true"
-        formControlName="lng"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <label for="">Enviament </label>
-      <ion-checkbox
-      name="enviament"
-      formControlName="enviament"
-      >
-      </ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <label for="">Recogida </label>
-      <ion-checkbox
-      name="recogida"
-      formControlName="recogida"
-      >
-      </ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <ion-input
-        name="temporada"
-        label="Temporada"
-        labelPlacement="floating"
-        type="text"
-        id="temporada"
-        formControlName="temporada"
-      ></ion-input>
-    </ion-item>
+      </ion-list>
+    
+    
+      @if (newProducte.getRawValue().imatge){
+        <ion-img [src]="newProducte.getRawValue().imatge"></ion-img>
+      }
+    
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              type="Submit"
+              [disabled]="newProducte.invalid"
+            >Afegir Producte</ion-button>  
+          </ion-col>
+    
+    
+        </ion-row>
+      </ion-grid>
+    
+    
+      </form>
 
 
-    <ion-item>
-      <ion-input
-        name="tipus"
-        label="Tipus"
-        labelPlacement="floating"
-        type="text"
-        id="tipus"
-        formControlName="tipus"
-      ></ion-input>
-    </ion-item>
+    </ion-col>
+  </ion-row>
 
 
-    <ion-item>
-      <ion-label position="inset">Imatge</ion-label>
-      <ion-button color="secondary" (click)="takePhoto()">
-        <ion-icon name="camera" slot="start"></ion-icon>
-        Càmera
-      </ion-button>
-      <ion-button color="tertiary" (click)="pickFromGallery()">
-        <ion-icon name="images" slot="start"></ion-icon>
-        Galeria
-      </ion-button>
-    </ion-item>
-  </ion-list>
-
-
-  @if (newProducte.getRawValue().imatge){
-    <ion-img [src]="newProducte.getRawValue().imatge"></ion-img>
-  }
-
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-button
-          type="Submit"
-          [disabled]="newProducte.invalid"
-        >Afegir Producte</ion-button>  
-      </ion-col>
-
-
-    </ion-row>
-  </ion-grid>
-
-
-  </form>
 </ion-content>

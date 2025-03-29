@@ -28,6 +28,11 @@ export class ProducteService {
   }
 
 
+  getProducte(id: string): Observable<Producte>{
+    return this.#http
+      .get<SingleProducteResponse>(`${this.#productesURL}/${id}`)
+      .pipe(map((resp) => resp.producte));
+  }
 
 
 }

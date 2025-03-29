@@ -20,4 +20,14 @@ export interface UsuariLogin {
 }
 
 
+export interface Client {
+    id: string;
+    nom: string;
+    cognom: string;
+    correu: string;
+    imatge: string;
+    lat: number;
+    lng: number;
+}
+
 

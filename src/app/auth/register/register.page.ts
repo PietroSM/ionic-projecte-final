@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, NavController, IonList, IonItem, IonInput, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonRow, IonCol, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,13 +13,14 @@ import { Usuari } from 'src/app/interfaces/usuari';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonCol, IonRow, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonBackButton, IonButtons, IonCol, IonRow, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class RegisterPage  {
 
   #fb = inject(NonNullableFormBuilder);
   #changeDetector = inject(ChangeDetectorRef);
   #authService = inject(AuthService);
+  #nav = inject(NavController);
 
 
   newUsuari = this.#fb.group({
@@ -94,7 +95,7 @@ export class RegisterPage  {
     this.#authService.registrar(newUsuari)
       .subscribe({
         next: () => {
-          console.log("piola");
+          this.#nav.navigateRoot(['/auth/login']);
         },
         error: () => {
           console.log("fatal");

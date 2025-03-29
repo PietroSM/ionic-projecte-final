@@ -1,53 +1,68 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <form 
-    action="#"
-    #formLogin="ngForm"
-    (ngSubmit)="login()"
-    [formGroup]="newLogin"
-    id="form-login"
-    role="form"
-  >
-    <ion-list>
-      <ion-item>
-        <ion-input
-          name="alies"
-          label="Alies"
-          labelPlacement="floating"
-          id="alies"
-          formControlName="alies"
-        ></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input
-          name="contrasenya"
-          label="Contrasenya"
-          labelPlacement="floating"
-          type="password"
-          id="contrasenya"
-          formControlName="contrasenya"
-        ></ion-input>
-      </ion-item>
-    </ion-list>
+<ion-content [fullscreen]="true" class="ion-padding">
+    
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+      
+      <ion-col size="12" size-md="6" class="ion-text-center">
+        <ion-img class="img-central"
+          src="assets/images/logo_taronja.svg"
+        ></ion-img>
+        
+        <form 
+          action="#"
+          #formLogin="ngForm"
+          (ngSubmit)="login()"
+          [formGroup]="newLogin"
+          id="form-login"
+          role="form"
+        >
+          <ion-list>
+            <ion-item>
+              <ion-input
+                name="alies"
+                label="Alies"
+                labelPlacement="floating"
+                id="alies"
+                formControlName="alies"
+              ></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-input
+                name="contrasenya"
+                label="Contrasenya"
+                labelPlacement="floating"
+                type="password"
+                id="contrasenya"
+                formControlName="contrasenya"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+        
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" class="ion-padding">
+                <ion-button
+                  type="Submit"
+                  [disabled]="newLogin.invalid"
+                >
+                  Iniciar
+                </ion-button>  
+              </ion-col>
   
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button
-            type="Submit"
-            [disabled]="newLogin.invalid"
-          >login</ion-button>  
-        </ion-col>
+              <ion-col size="6" class="ion-padding">
+                <ion-button
+                  [routerLink]="['/auth/register']"
+                  [routerDirection]="'root'"
+                >
+                  Registrar
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        
+        </form>
+      </ion-col>
 
+    </ion-row>
 
-      </ion-row>
-    </ion-grid>
-
-  </form>
 </ion-content>

@@ -26,10 +26,14 @@ export const routes: Routes = [
   },
   {
     path: 'producte-card',
-    loadComponent: () => import('./producte/producte-card/producte-card.page').then( m => m.ProducteCardPage)
+    loadComponent: () => 
+      import('./producte/producte-card/producte-card.page')
+      .then( m => m.ProducteCardPage)
   },
   {
-    path: 'detalls-producte',
-    loadComponent: () => import('./producte/detalls-producte/detalls-producte.page').then( m => m.DetallsProductePage)
+    path: 'producte/:id',
+    loadComponent: () => 
+      import('./producte/detalls-producte/detalls-producte.page')
+      .then( m => m.DetallsProductePage)
   },
 ];

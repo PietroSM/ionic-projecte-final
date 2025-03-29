@@ -1,4 +1,4 @@
-import { Usuari } from "./usuari";
+import { Client } from "./usuari";
 
 export interface InsertarProducte {
     nom: string;
@@ -16,8 +16,8 @@ export interface InsertarProducte {
 
 
 export interface Producte extends InsertarProducte {
-    _id: number;
-    client: Usuari;
+    id: string;
+    client: Client;
     distancia?: number;
     propietat?: boolean;
 }

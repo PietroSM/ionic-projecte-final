@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonCheckbox, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonCheckbox, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonCol, IonRow, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { InsertarProducte } from 'src/app/interfaces/producte';
@@ -13,7 +13,7 @@ import { ProducteService } from 'src/app/services/producte.service';
   templateUrl: './afegir-producte.page.html',
   styleUrls: ['./afegir-producte.page.scss'],
   standalone: true,
-  imports: [IonRow, IonCol, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonCheckbox, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonBackButton, IonButtons, IonRow, IonCol, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonCheckbox, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class AfegirProductePage {
 
