@@ -11,6 +11,14 @@ import {
   personCircleOutline,
   carOutline,
   peopleOutline,
+  flowerOutline,
+  sunnyOutline,
+  snowOutline,
+  leafOutline,
+  helpOutline,
+  trashOutline,
+  createOutline,
+  personAddOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -29,7 +37,15 @@ export class AppComponent {
       basketOutline,
       personCircleOutline,
       carOutline,
-      peopleOutline
+      peopleOutline,
+      flowerOutline,
+      sunnyOutline,
+      snowOutline,
+      leafOutline,
+      helpOutline,
+      trashOutline,
+      createOutline,
+      personAddOutline
     });
   }
 }

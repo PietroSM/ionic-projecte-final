@@ -3,7 +3,6 @@ ion-content {
 }
 
 
-
 ion-toolbar{
     color: white;
     --background: #6e5d99;
@@ -13,8 +12,26 @@ ion-toolbar{
     height: 40px;
 }
 
-// .ion-card-img{
-//     height: auto;
-// }
 
 
+ion-card {
+    --background: #ead1c0;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 10px; 
+  }
+  
+  .icon-container ion-icon {
+    font-size: 24px;
+  }
+
+ion-button {
+    --border-radius: 5px;
+    --background: #6e5d99;
+}

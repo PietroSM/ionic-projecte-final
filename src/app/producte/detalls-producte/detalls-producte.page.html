@@ -15,18 +15,98 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-card class="ion-card-img">
-    <img [src]="producte()?.imatge" alt="Imagen de ejemplo" class="imatge-producte">
-  </ion-card>
+  @if (this.producte()) {
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+    
+          <ion-col size="5" size-md="3">
+            <img [src]="producte()!.imatge" alt="Imagen de ejemplo" style="width: 100%; border-radius: 10px;">
+          </ion-col>
+    
+          <ion-col size="7" size-md="9">
+            <ion-card-header>
+              <ion-card-title>{{producte()!.nom}}</ion-card-title>
+              <ion-card-subtitle>Stock: {{producte()!.stock}} Kg</ion-card-subtitle>
+              <ion-card-subtitle>Preu: {{producte()!.preu}} €/Kg</ion-card-subtitle>
+              <ion-card-subtitle>Ubicació: Cartago </ion-card-subtitle>
+              <ion-card-subtitle>Temporada: {{producte()?.temporada}}</ion-card-subtitle>
+              <ion-card-subtitle>Tipus: {{producte()?.tipus}}</ion-card-subtitle>
+            </ion-card-header>
+    
+            <ion-card-content class="icon-container">
+              <ion-icon name="car-outline" style="font-size: 70px;"></ion-icon>
+              <ion-icon name="people-outline" style="font-size: 70px;"></ion-icon>        
+              <ion-icon [name]="iconEstacio()" style="font-size: 70px;"></ion-icon>
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  }
 
-
+  
+  
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>{{producte()?.nom}}</ion-card-title>
-      <ion-card-subtitle>Stock: {{producte()?.stock}} Kg</ion-card-subtitle>
-      <ion-card-subtitle>Preu: {{producte()?.preu}} €/Kg</ion-card-subtitle>
-      <ion-card-subtitle>Ubicació: Cartago </ion-card-subtitle>
-    </ion-card-header>
+    <ion-row>
+      <ion-col size="3" size-md="3">
+        <img [src]="producte()?.client?.imatge" alt="Imagen de ejemplo" style="width: 100%; border-radius: 10px;">
+      </ion-col>
+      <ion-col size="9" size-md="9">
+        <ion-card-header>
+          <ion-card-title>Venedor {{producte()?.client?.nom}}, {{producte()?.client?.cognom}}</ion-card-title>
+          <ion-card-subtitle>correu: {{producte()?.client?.correu}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-col>
+    </ion-row>
   </ion-card>
+  
+  
+  @if(producte()?.propietat == false){
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="auto" class="ion-text-center">
+        <ion-button (click)="editarProducte()">
+          <ion-icon name="create-outline" slot="start"></ion-icon>          
+          Editar
+        </ion-button>
+      </ion-col>
+    
+      <ion-col size="auto" class="ion-text-center">
+        <ion-button (click)="esborrarProducte()">
+          <ion-icon name="trash-outline" slot="start"></ion-icon>
+          Esborrar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  } @else {
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size="auto" class="ion-text-center">
+        <ion-button (click)="afegirCistella()">
+          <ion-icon name="basket-outline" slot="start"></ion-icon>
+          Afegir Cistella
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="auto" class="ion-text-center">
+        <ion-button (click)="obrirXat()">
+          <ion-icon name="person-add-outline"></ion-icon>          
+          Xat
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+
+  }
+
+
+
+
+
+
+
 
 </ion-content>
