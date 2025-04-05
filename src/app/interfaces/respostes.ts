@@ -18,3 +18,7 @@ export interface SingleProducteResponse {
 export interface ProductesResponse {
     productes: Producte[];
 }
+
+export interface CistellaResponse {
+    resultat: string;
+}

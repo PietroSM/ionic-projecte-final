@@ -1,10 +1,12 @@
 import { Component, computed, effect, inject, input, numberAttribute, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonImg, IonRow, IonCard, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCol, IonIcon, IonButton, IonCardContent, IonGrid } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, ModalController, IonTitle, IonToolbar, IonButtons, IonBackButton, IonImg, IonRow, IonCard, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCol, IonIcon, IonButton, IonCardContent, IonGrid } from '@ionic/angular/standalone';
 import { ProducteService } from 'src/app/services/producte.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { ProducteCardPage } from "../../producte/producte-card/producte-card.page";
+import { ModalAfegirProductePage } from '../modal-afegir-producte/modal-afegir-producte.page';
+import { CistellaService } from 'src/app/services/cistella.service';
 
 
 @Component({
@@ -17,6 +19,8 @@ import { ProducteCardPage } from "../../producte/producte-card/producte-card.pag
 export class DetallsProductePage{
 
   #producteService = inject(ProducteService);
+  #cistellaService = inject(CistellaService);
+  #modalCtrl = inject(ModalController);
   iconEstacio = signal<string>("");
   
 
@@ -66,8 +70,22 @@ export class DetallsProductePage{
 
   }
 
-  afegirCistella(){
+  async afegirCistella(){
+    const modal = await this.#modalCtrl.create({
+      component: ModalAfegirProductePage,
+      componentProps: { producte: this.producte }
+    });
 
+    await modal.present();
+    const result = await modal.onDidDismiss();
+
+    if(result.data){
+      this.#cistellaService.afegirProducteCistella(result.data.dadesAfegir)
+      .subscribe({
+        next: () => {},
+        error: (error) => {console.log(error);}
+      })
+    }
   }
 
 

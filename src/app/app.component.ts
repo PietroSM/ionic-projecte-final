@@ -18,7 +18,8 @@ import {
   helpOutline,
   trashOutline,
   createOutline,
-  personAddOutline
+  personAddOutline,
+  close
 } from 'ionicons/icons';
 
 @Component({
@@ -45,7 +46,8 @@ export class AppComponent {
       helpOutline,
       trashOutline,
       createOutline,
-      personAddOutline
+      personAddOutline,
+      close
     });
   }
 }

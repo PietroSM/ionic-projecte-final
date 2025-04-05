@@ -36,4 +36,8 @@ export const routes: Routes = [
       import('./producte/detalls-producte/detalls-producte.page')
       .then( m => m.DetallsProductePage)
   },
+  {
+    path: 'modal-afegir-producte',
+    loadComponent: () => import('./producte/modal-afegir-producte/modal-afegir-producte.page').then( m => m.ModalAfegirProductePage)
+  },
 ];
