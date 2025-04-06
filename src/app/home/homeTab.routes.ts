@@ -17,6 +17,14 @@ export const homeTabRoutes: Routes = [
         canActivate: [loginActiveGuard]
     },
     {
+        path: 'cistella',
+        loadComponent: () =>
+            import('./cistella-page/cistella-page.page')
+            .then((m) => m.CistellaPagePage),
+        canActivate: [loginActiveGuard]
+
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: 'inici',

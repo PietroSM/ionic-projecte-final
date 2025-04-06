@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { InsertarProducteCistella } from '../interfaces/cistella';
+import { Cistella, InsertarProducteCistella } from '../interfaces/cistella';
 import { map, Observable } from 'rxjs';
 import { CistellaResponse } from '../interfaces/respostes';
 
@@ -20,6 +20,14 @@ export class CistellaService {
   }
 
 
-  
+  getCistella(): Observable<Cistella>{
+    return this.#http
+      .get<Cistella>(`${this.#cistellaURL}`)
+      .pipe(map((resp) => resp));
+  }
+
+
+
+
 
 }

@@ -1,3 +1,4 @@
+import { Cistella } from "./cistella";
 import { Producte } from "./producte";
 import { Usuari } from "./usuari";
 
