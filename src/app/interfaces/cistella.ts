@@ -1,13 +1,15 @@
 import { Producte } from "./producte";
 
 export interface Cistella {
-    productes: [
-        producte: Producte,
-        quantitat: number,
-        preu: number,
-    ];
+    productes: liniaCistella[];
     idCistella: string;
     preuTotal: number;
+}
+
+export interface liniaCistella {
+    producte: Producte;
+    quantitat: number;
+    preu: number;
 }
 
 

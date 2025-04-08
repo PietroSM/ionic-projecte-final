@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Cistella, InsertarProducteCistella } from '../interfaces/cistella';
 import { map, Observable } from 'rxjs';
-import { CistellaResponse } from '../interfaces/respostes';
+import { CistellaResponse, SingleCistellaResponse } from '../interfaces/respostes';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class CistellaService {
 
   getCistella(): Observable<Cistella>{
     return this.#http
-      .get<Cistella>(`${this.#cistellaURL}`)
+      .get<SingleCistellaResponse>(`${this.#cistellaURL}`)
       .pipe(map((resp) => resp));
   }
 
