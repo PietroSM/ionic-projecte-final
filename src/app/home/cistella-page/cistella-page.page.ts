@@ -36,5 +36,9 @@ export class CistellaPagePage {
 
   }
 
+
+  realitzarComanda(){
+    
+  }
   
 }
