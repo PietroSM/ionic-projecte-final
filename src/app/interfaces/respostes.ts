@@ -29,3 +29,7 @@ export interface SingleCistellaResponse {
 export interface CistellaResponse {
     resultat: string;
 }
+
+export interface ComandaResponse {
+    idComanda: string;
+}
