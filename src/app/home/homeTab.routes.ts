@@ -25,6 +25,13 @@ export const homeTabRoutes: Routes = [
 
     },
     {
+        path: 'perfil',
+        loadComponent: () =>
+            import('./profile-options/profile-options.page')
+            .then((m) => m.ProfileOptionsPage),
+        canActivate: [loginActiveGuard]
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: 'inici',

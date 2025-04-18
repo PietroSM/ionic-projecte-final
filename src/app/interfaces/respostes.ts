@@ -1,4 +1,5 @@
 import { Cistella, liniaCistella } from "./cistella";
+import { Comanda } from "./comanda";
 import { Producte } from "./producte";
 import { Usuari } from "./usuari";
 
@@ -15,6 +16,9 @@ export interface SingleProducteResponse {
     producte: Producte;
 }
 
+export interface SingleComandaResponse {
+    comanda: Comanda;
+}
 
 export interface ProductesResponse {
     productes: Producte[];
@@ -32,4 +36,8 @@ export interface CistellaResponse {
 
 export interface ComandaResponse {
     idComanda: string;
+}
+
+export interface ComandesResponse {
+    comandes: Comanda[];
 }

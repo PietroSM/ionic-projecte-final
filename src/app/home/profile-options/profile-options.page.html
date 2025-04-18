@@ -8,9 +8,86 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile-options</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-card  >
+    <ion-grid>
+      <ion-row>
+
+        <ion-col class="icon-gran" size="3">
+          <ion-icon name="person-circle-outline"></ion-icon>        
+        </ion-col>
+        <ion-col  size="9" class="text-centre">
+          <ion-card-header>
+            <ion-card-title class="tamany-titol" >Perfil</ion-card-title>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <ion-card [routerLink]="['/comandes']">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="icon-gran" size="3">
+          <ion-icon name="reader-outline"></ion-icon>
+        </ion-col>
+        <ion-col  size="9" class="text-centre">
+          <ion-card-header>
+            <ion-card-title class="tamany-titol" >Comandes</ion-card-title>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="icon-gran" size="3">
+          <ion-icon name="logo-euro"></ion-icon>        
+        </ion-col>
+        <ion-col  size="9" class="text-centre">
+          <ion-card-header>
+            <ion-card-title class="tamany-titol" >Vendes</ion-card-title>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="icon-gran" size="3">
+          <ion-icon name="storefront-outline"></ion-icon>        
+        </ion-col>
+        <ion-col  size="9" class="text-centre">
+          <ion-card-header>
+            <ion-card-title class="tamany-titol" >Productes en Venda</ion-card-title>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="icon-gran" size="3">
+          <ion-icon name="log-out-outline"></ion-icon>        
+        </ion-col>
+        <ion-col  size="9" class="text-centre">
+          <ion-card-header>
+            <ion-card-title class="tamany-titol" >Tancar Sessió</ion-card-title>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
 </ion-content>

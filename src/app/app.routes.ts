@@ -40,4 +40,22 @@ export const routes: Routes = [
     path: 'modal-afegir-producte',
     loadComponent: () => import('./producte/modal-afegir-producte/modal-afegir-producte.page').then( m => m.ModalAfegirProductePage)
   },
+  {
+    path: 'comandes',
+    loadComponent: () => import('./comanda/comandes/comandes.page').then( m => m.ComandesPage),
+    canActivate: [loginActiveGuard]
+  },
+  {
+    path: 'comanda-card',
+    loadComponent: () => import('./comanda/comanda-card/comanda-card.page').then( m => m.ComandaCardPage)
+  },
+  {
+    path: 'comandes/:id',
+    loadComponent: () => import('./comanda/comanda-status-page/comanda-status-page.page').then( m => m.ComandaStatusPagePage),
+    canActivate: [loginActiveGuard]
+  },
+  {
+    path: 'comanda-status-page',
+    loadComponent: () => import('./comanda/comanda-status-page/comanda-status-page.page').then( m => m.ComandaStatusPagePage)
+  },
 ];

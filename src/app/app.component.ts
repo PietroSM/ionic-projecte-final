@@ -19,7 +19,16 @@ import {
   trashOutline,
   createOutline,
   personAddOutline,
-  close
+  close,
+  readerOutline,
+  logoEuro,
+  logOutOutline,
+  cubeOutline,
+  alertCircleOutline,
+  batteryDeadOutline,
+  airplaneOutline,
+  bagCheckOutline,
+  storefrontOutline,
 } from 'ionicons/icons';
 
 @Component({
@@ -47,7 +56,16 @@ export class AppComponent {
       trashOutline,
       createOutline,
       personAddOutline,
-      close
+      close,
+      readerOutline,
+      logoEuro,
+      logOutOutline,
+      cubeOutline,
+      alertCircleOutline,
+      batteryDeadOutline,
+      airplaneOutline,
+      bagCheckOutline,
+      storefrontOutline
     });
   }
 }

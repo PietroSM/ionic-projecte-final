@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/perfil"></ion-back-button>
+    </ion-buttons>    
+    <ion-title slot="end">WALLA-COMANDES</ion-title>
+    <ion-buttons slot="end">
+      <ion-img src="assets/images/logo_taronja.svg" class="imatge-top"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  @for (comanda of comandes(); track comanda.Vendedor){
+    <app-comanda-card
+    [comanda]="comanda">
+    </app-comanda-card>
+  }
+
+
+
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-card [routerLink]="['/comandes/' + comanda().id]" >
+  <ion-grid>
+    <ion-row>
+
+      <ion-col class="icon-gran" size="3">
+        <ion-icon [name]="iconEstat(comanda().estatComanda)"></ion-icon>
+      </ion-col>
+
+      <ion-col class="text-centre" size="9">
+        <ion-card-header>
+          <ion-card-title class="tamany-titol">Preu: {{comanda().preuTotal}} €</ion-card-title>
+          <ion-card-title class="tamany-titol">Status: {{comanda().estatComanda}}</ion-card-title>
+        </ion-card-header>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-card>
