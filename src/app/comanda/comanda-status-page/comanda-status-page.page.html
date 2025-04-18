@@ -1,13 +1,76 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>comanda-status-page</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/comandes"></ion-back-button>
+    </ion-buttons>    
+    <ion-title slot="end">WALLA-ESTAT</ion-title>
+    <ion-buttons slot="end">
+      <ion-img src="assets/images/logo_taronja.svg" class="imatge-top"></ion-img>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">comanda-status-page</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="contingut-comanda">
+
+  <ion-card class="card-general">
+    <ion-card-header>
+      <ion-card-title class="titol-principal">Llistat Comanda</ion-card-title>
+    </ion-card-header>
+
+    @if(comanda()){
+      <ion-list>
+        <ion-item class="capcalera-llista">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="col-centrat"><strong>Nom</strong></ion-col>
+              <ion-col class="col-centrat"><strong>Quantitat</strong></ion-col>
+              <ion-col class="col-centrat"><strong>Preu</strong></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+    
+        @for(linia of comanda()!.productes; track $index){
+          <ion-item>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="col-centrat">{{ linia.producte.nom }}</ion-col>
+                <ion-col class="col-centrat">{{ linia.quantitat }}</ion-col>
+                <ion-col class="col-centrat">{{ linia.preu | currency:'EUR' }}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        }  
+      </ion-list>
+    }
+  </ion-card>
+
+  <ion-card class="card-estat">
+    <ion-card-header>
+      @if(comanda()?.me){
+
+      } @else {
+        <ion-card-title class="estat">Estat Comanda: {{comanda()?.estatComanda}}</ion-card-title>
+      }
+      <ion-card-title class="preu-total">Preu: {{comanda()?.preuTotal}} €</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card class="card-vendedor">
+    <ion-row>
+      <ion-col size="3" size-md="3">
+        <img [src]="comanda()?.Vendedor?.imatge" alt="Imagen de exemple" class="imatge-vendedor">
+      </ion-col>
+      <ion-col size="9" size-md="9">
+        <ion-card-header>
+          <ion-card-title class="titol-vendedor">
+            Venedor {{comanda()?.Vendedor?.nom}}, {{comanda()?.Vendedor?.cognom}}
+          </ion-card-title>
+          <ion-card-subtitle class="correu-vendedor">
+            correu: {{comanda()?.Vendedor?.correu}}
+          </ion-card-subtitle>
+        </ion-card-header>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
 </ion-content>

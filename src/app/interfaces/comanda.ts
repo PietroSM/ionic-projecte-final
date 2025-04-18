@@ -18,4 +18,5 @@ export interface Comanda {
     enviament: boolean;
     puntRecogida: boolean;
     Vendedor: Client;
+    me?: boolean;
 }
