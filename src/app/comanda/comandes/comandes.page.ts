@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonImg, IonBackButton } from '@ionic/angular/standalone';
@@ -15,21 +15,11 @@ import { ComandaCardPage } from '../comanda-card/comanda-card.page';
 })
 export class ComandesPage {
 
-  comandes = signal<Comanda[]>([]);
+  comandes = input.required<Comanda[]>();
   #comandesService = inject(ComandaService);
 
 
   constructor(){
-
-    this.#comandesService.getComandes()
-    .subscribe((comandes) => {
-      this.comandes.set(comandes);
-    });
-
-    effect(() => {
-      console.log(this.comandes());
-    })
-
 
   }
 

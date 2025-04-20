@@ -1,20 +1,23 @@
-import { Component, computed, effect, inject, input, OnInit } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonImg, IonList, IonItem, IonGrid, IonRow, IonCol, IonButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSelect, IonSelectOption, IonBackButton, IonButtons, IonImg, IonList, IonItem, IonGrid, IonRow, IonCol, IonButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/angular/standalone';
 import { ComandaService } from 'src/app/services/comanda.service';
-import { rxResource } from '@angular/core/rxjs-interop';
+import { rxResource, takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UpdateComanda } from 'src/app/interfaces/comanda';
 
 @Component({
   selector: 'app-comanda-status-page',
   templateUrl: './comanda-status-page.page.html',
   styleUrls: ['./comanda-status-page.page.scss'],
   standalone: true,
-  imports: [IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonIcon, IonButton, IonCol, IonRow, IonGrid, IonItem, IonList, IonImg, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardSubtitle,IonSelect, IonSelectOption, IonCardTitle, IonCardHeader, IonCard, IonIcon, IonButton, IonCol, IonRow, IonGrid, IonItem, IonList, IonImg, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class ComandaStatusPagePage {
 
   #comandaService = inject(ComandaService);
+  #destroyRef = inject(DestroyRef);
+
 
   id = input.required<string>();
 
@@ -32,6 +35,22 @@ export class ComandaStatusPagePage {
 
   comanda = computed(() => this.comandasResource.value());
 
+  canviarEstat(event: any){
+
+    // console.log(event.detail.value);
+
+    const dades : UpdateComanda = {
+      id: this.comanda()!.id,
+      estatComanda: event.detail.value
+    }
+
+    this.#comandaService.putEstatComanda(dades)
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: () => {},
+        error: () => {}
+      });
+  }
 
 
 }

@@ -1,0 +1,9 @@
+
+<ion-content [fullscreen]="true">
+  @for (producte of productes(); track producte.id){
+    <app-producte-card
+    [producte]="producte">
+
+    </app-producte-card>
+  }
+</ion-content>

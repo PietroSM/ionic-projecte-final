@@ -47,7 +47,18 @@
   <ion-card class="card-estat">
     <ion-card-header>
       @if(comanda()?.me){
-
+        <ion-select 
+          class="estat" 
+          interface="action-sheet" 
+          [value]="comanda()?.estatComanda"
+          (ionChange)="canviarEstat($event)"
+        >
+          <ion-select-option value="Cancelat">Cancelat</ion-select-option>
+          <ion-select-option value="Preparacio">Preparació</ion-select-option>
+          <ion-select-option value="Enviat">Enviat</ion-select-option>
+          <ion-select-option value="Entregat">Entregat</ion-select-option>
+          <ion-select-option value="Depositat">Desopitat</ion-select-option>
+        </ion-select>
       } @else {
         <ion-card-title class="estat">Estat Comanda: {{comanda()?.estatComanda}}</ion-card-title>
       }

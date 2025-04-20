@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ComandaResponse, ComandesResponse, SingleComandaResponse } from '../interfaces/respostes';
-import { Comanda, InsertarComanda } from '../interfaces/comanda';
+import { Comanda, InsertarComanda, UpdateComanda } from '../interfaces/comanda';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +25,22 @@ export class ComandaService {
       .pipe(map((resp) => resp.comandes));
   }
 
+  getComandesVendes(): Observable<Comanda[]>{
+    return this.#http
+      .get<ComandesResponse>(`${this.#comandaURL}/vendes`)
+      .pipe(map((resp) => resp.comandes));
+  }
+
+
   getComanda(id: string): Observable<Comanda>{
     return this.#http
       .get<SingleComandaResponse>(`${this.#comandaURL}/${id}`)
       .pipe(map((resp) => resp.comanda));
   }
 
+  putEstatComanda(dades: UpdateComanda): Observable<void>{
+    return this.#http
+      .put<void>(`${this.#comandaURL}/estat`, dades);
+  }
 
 }

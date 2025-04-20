@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { logoutActiveGuard } from './shared/guards/logout-active.guard';
 import { loginActiveGuard } from './shared/guards/login-active.guard';
+import { comandesResolver } from './shared/resolvers/comandes.resolver';
 
 export const routes: Routes = [
   {
@@ -43,7 +44,20 @@ export const routes: Routes = [
   {
     path: 'comandes',
     loadComponent: () => import('./comanda/comandes/comandes.page').then( m => m.ComandesPage),
-    canActivate: [loginActiveGuard]
+    canActivate: [loginActiveGuard],
+    resolve: {
+      comandes : comandesResolver
+    }
+  },
+  {
+    path: 'vendes',
+    loadComponent: 
+      () => import('./comanda/comandes/comandes.page')
+      .then( m => m.ComandesPage),
+    canActivate: [loginActiveGuard],
+    resolve: {
+      comandes : comandesResolver
+    }
   },
   {
     path: 'comanda-card',
@@ -55,7 +69,18 @@ export const routes: Routes = [
     canActivate: [loginActiveGuard]
   },
   {
+    path: 'productes-venda',
+    loadComponent:
+      () => import('./producte/productes-propis/productes-propis.page')
+      .then(m => m.ProductesPropisPage),
+      canActivate: [loginActiveGuard]
+  },
+  {
     path: 'comanda-status-page',
     loadComponent: () => import('./comanda/comanda-status-page/comanda-status-page.page').then( m => m.ComandaStatusPagePage)
+  },
+  {
+    path: 'productes-propis',
+    loadComponent: () => import('./producte/productes-propis/productes-propis.page').then( m => m.ProductesPropisPage)
   },
 ];

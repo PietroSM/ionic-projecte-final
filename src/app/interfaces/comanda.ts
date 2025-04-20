@@ -8,6 +8,11 @@ export interface InsertarComanda {
     preuTotal: number;
 }
 
+export interface UpdateComanda {
+    id: string;
+    estatComanda: string;
+}
+
 
 export interface Comanda {
     id: string
