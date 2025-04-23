@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>xat-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content>
+    @for(missatge of missatges(); track $index){
+      <p><strong>{{ missatge.autor }}</strong> {{ missatge.text }}</p>
+    }
+  
+    <ion-item>
+      <ion-input placeholder="Escriu un missatge..." #input></ion-input>
+      <ion-button (click)="enviarMissatge(input.value); input.value = ' '">Enviar</ion-button>
+    </ion-item>
+  </ion-content>
+</ion-content>

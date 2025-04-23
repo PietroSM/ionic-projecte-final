@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>   
+    <ion-title slot="end">WALLA-XAT</ion-title>
+    <ion-buttons slot="end">
+      <ion-img src="assets/images/logo_taronja.svg" class="imatge-top"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contingut-xats">
+
+  @for(xat of xats()!; track $index){
+    <ion-card class="xat-card" [routerLink]="['/xat/'+ xat.id]">
+      <ion-row class="xat-row">
+        <ion-col size="3" size-md="3">
+          <img [src]="xat.vendedor.imatge" alt="Foto venedor" class="xat-foto">
+        </ion-col>
+        <ion-col size="9" size-md="9">
+          <ion-card-header class="xat-info">
+            <ion-card-title class="xat-nom">
+              {{xat.vendedor.nom}}
+            </ion-card-title>
+            <ion-card-subtitle class="xat-missatge">
+              Últim missatge
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  }
+
+</ion-content>
+

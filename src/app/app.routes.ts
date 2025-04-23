@@ -83,4 +83,8 @@ export const routes: Routes = [
     path: 'productes-propis',
     loadComponent: () => import('./producte/productes-propis/productes-propis.page').then( m => m.ProductesPropisPage)
   },
+  {
+    path: 'xat/:id',
+    loadComponent: () => import('./xat/xat-detail/xat-detail.page').then( m => m.XatDetailPage)
+  },
 ];

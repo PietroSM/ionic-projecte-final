@@ -7,6 +7,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { ProducteCardPage } from "../../producte/producte-card/producte-card.page";
 import { ModalAfegirProductePage } from '../modal-afegir-producte/modal-afegir-producte.page';
 import { CistellaService } from 'src/app/services/cistella.service';
+import { XatService } from 'src/app/services/xat.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class DetallsProductePage{
 
   #producteService = inject(ProducteService);
   #cistellaService = inject(CistellaService);
+  #xatService = inject(XatService);
   #modalCtrl = inject(ModalController);
   iconEstacio = signal<string>("");
   
@@ -90,7 +92,17 @@ export class DetallsProductePage{
 
 
   obrirXat(){
-    
+    this.#xatService.crearXat(this.producte()!.client.id)
+    .subscribe({
+      next: (conversa: any) => {
+        console.log('Conversa trobada/creada:', conversa);
+        // podries redirigir a la vista de xat amb l'id
+      },
+      error: (error) => {
+        console.error('Error creant la conversa:', error);
+      }
+    });
+
   }
 
 }

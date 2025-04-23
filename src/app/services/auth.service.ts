@@ -20,6 +20,13 @@ export class AuthService {
   }
 
 
+  getIdClient(): Observable<string> {
+    return this.#http
+      .get<string>(`${this.#authURL}/client`)
+      .pipe(map((resp) => resp));
+  }
+
+
   registrar(usuari: Usuari): Observable<void>{
     return this.#http
       .post<SingleUsuariResponse>(`${this.#authURL}/registrar`, usuari)
@@ -74,6 +81,8 @@ export class AuthService {
       }),
     );
   }
+
+
 
 
 }

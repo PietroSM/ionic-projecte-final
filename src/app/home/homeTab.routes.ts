@@ -10,6 +10,13 @@ export const homeTabRoutes: Routes = [
         canActivate: [loginActiveGuard]
     },
     {
+        path: 'xat',
+        loadComponent: () =>
+            import('./xat-page/xat-page.page')
+            .then((m) => m.XatPagePage),
+        canActivate: [loginActiveGuard]
+    },
+    {
         path: 'afegir',
         loadComponent: () =>
             import('./afegir-producte/afegir-producte.page')
