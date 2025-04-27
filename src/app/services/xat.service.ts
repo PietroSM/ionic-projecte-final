@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { map, Observable } from 'rxjs';
-import { Missatge, Xat, XatsResponse } from '../interfaces/xat';
+import { Missatge, MissatgesReponse, Xat, XatsResponse } from '../interfaces/xat';
+import { Client } from '../interfaces/usuari';
+import { SingleClientResponse } from '../interfaces/respostes';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +34,11 @@ export class XatService {
   }
 
 
-  // getMissatges(conversaId: string): Observable<>{
-
-  // }
+  getMissatges(conversaId: string): Observable<Missatge[]>{
+    return this.#http
+      .get<Missatge[]>(`${this.#xatURL}/${conversaId}`)
+      .pipe(map((resp) => resp));
+  }
 
   enviarMissatge(idConversa: string, text: string, token: string) {
     this.#socket.emit('enviarMissatge', {
@@ -46,6 +50,12 @@ export class XatService {
 
   escoltarMissatges(): Observable<Missatge> {
     return this.#socket.fromEvent('nouMissatge');
+  }
+
+  getReceptorConversa(idConversa: string): Observable<Client> {
+    return this.#http
+      .get<SingleClientResponse>(`${this.#xatURL}/receptor/${idConversa}`)
+      .pipe(map((resp) => resp.client));
   }
 
   // escoltarErrors(): Observable<any> {

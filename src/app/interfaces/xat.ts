@@ -14,7 +14,12 @@ export interface Xat {
 
 export interface Missatge {
     idMissatge?: string;
-    idConversa: string;
+    idConversa?: string;
     emisor?: string;
     text: string;
+    data?: string;
+}
+
+export interface MissatgesReponse {
+    missatges: Missatge[];
 }

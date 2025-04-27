@@ -1,18 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>xat-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/xat"></ion-back-button>
+    </ion-buttons>    
+    <ion-title slot="end">{{this.receptor()?.nom}}</ion-title>
+    <ion-buttons slot="end">
+      <img [src]="this.receptor()?.imatge" class="imatge-top" style="border-radius: 20px;"/>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-content>
-    @for(missatge of missatges(); track $index){
-      <p><strong>{{ missatge.autor }}</strong> {{ missatge.text }}</p>
+
+<ion-content [fullscreen]="true" class="chat-page">
+  <div class="chat-container">
+    @for (missatge of missatges(); track $index) {
+      <div 
+        class="message"
+        [class.my-message]="missatge.emisor === this.idEmisor()"
+        [class.other-message]="missatge.emisor !== this.idEmisor()">
+          <div class="message-header">
+            <span class="message-date">{{ missatge.data | date:'dd/MM/yyyy, H:mm' }}</span>
+          </div>
+          <div class="message-body">
+            {{ missatge.text }}
+          </div>
+      </div>
     }
-  
-    <ion-item>
-      <ion-input placeholder="Escriu un missatge..." #input></ion-input>
-      <ion-button (click)="enviarMissatge(input.value); input.value = ' '">Enviar</ion-button>
-    </ion-item>
-  </ion-content>
+  </div>
 </ion-content>
+
+<ion-footer slot="fixed">
+  <ion-item lines="none" class="chat-input">
+    <ion-input placeholder="Escriu un missatge..." #input></ion-input>
+    <ion-button (click)="enviarMissatge(input.value); input.value = ''">Enviar</ion-button>
+  </ion-item>
+</ion-footer>

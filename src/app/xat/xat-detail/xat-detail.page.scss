@@ -1,0 +1,68 @@
+ion-toolbar{
+    color: white;
+    --background: #6e5d99;
+}
+
+.imatge-top {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.chat-page {
+  --background: #f9f9fb;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 70%;
+  margin: 5px 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.my-message {
+  background-color: #6e5d99;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.other-message {
+  background-color: #ffffff;
+  color: #333333;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.message-header {
+  margin-bottom: 6px;
+}
+
+.message-date {
+  font-size: 0.8rem;
+}
+
+.message-body {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.chat-input {
+  --background: #ffffff;
+  padding: 8px 16px;
+  display: flex;
+  gap: 10px;
+}
+

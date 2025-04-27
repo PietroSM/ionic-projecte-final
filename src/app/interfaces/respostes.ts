@@ -1,7 +1,7 @@
 import { Cistella, liniaCistella } from "./cistella";
 import { Comanda } from "./comanda";
 import { Producte } from "./producte";
-import { Usuari } from "./usuari";
+import { Client, Usuari } from "./usuari";
 
 export interface TokenResponse {
     accesToken: string;
@@ -40,4 +40,12 @@ export interface ComandaResponse {
 
 export interface ComandesResponse {
     comandes: Comanda[];
+}
+
+export interface SingleIdClient {
+    idClient: string;
+}
+
+export interface SingleClientResponse {
+    client: Client;
 }

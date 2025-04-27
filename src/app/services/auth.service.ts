@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { Usuari, UsuariLogin } from '../interfaces/usuari';
 import { catchError, from, map, Observable, of, pipe, switchMap } from 'rxjs';
-import { SingleUsuariResponse, TokenResponse } from '../interfaces/respostes';
+import { SingleIdClient, SingleUsuariResponse, TokenResponse } from '../interfaces/respostes';
 import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
@@ -22,8 +22,8 @@ export class AuthService {
 
   getIdClient(): Observable<string> {
     return this.#http
-      .get<string>(`${this.#authURL}/client`)
-      .pipe(map((resp) => resp));
+      .get<SingleIdClient>(`${this.#authURL}/client`)
+      .pipe(map((resp) => resp.idClient));
   }
 
 
