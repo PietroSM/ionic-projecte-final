@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { map, Observable } from 'rxjs';
+import { map, Observable, pipe } from 'rxjs';
 import { Missatge, MissatgesReponse, Xat, XatsResponse } from '../interfaces/xat';
 import { Client } from '../interfaces/usuari';
 import { SingleClientResponse } from '../interfaces/respostes';
@@ -39,6 +39,13 @@ export class XatService {
       .get<Missatge[]>(`${this.#xatURL}/${conversaId}`)
       .pipe(map((resp) => resp));
   }
+
+  getUltimMissatge(conversaId: string): Observable<Missatge>{
+    return this.#http
+      .get<Missatge>(`${this.#xatURL}/${conversaId}/ultim`)
+      .pipe(map((resp) => resp));
+  }
+
 
   enviarMissatge(idConversa: string, text: string, token: string) {
     this.#socket.emit('enviarMissatge', {
