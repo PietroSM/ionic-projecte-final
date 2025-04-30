@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, NavController, IonList, IonItem, IonInput, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonRow, IonCol, IonButtons, IonBackButton } from '@ionic/angular/standalone';
@@ -6,6 +6,8 @@ import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuari } from 'src/app/interfaces/usuari';
+import { SearchResult } from 'src/app/interfaces/search-result';
+import { GaAutocompleteDirective } from "../../shared/directives/ol-maps/ga-autocomplete.directive";
 
 
 @Component({
@@ -13,7 +15,7 @@ import { Usuari } from 'src/app/interfaces/usuari';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonButtons, IonCol, IonRow, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonBackButton, IonButtons, IonCol, IonRow, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
 })
 export class RegisterPage  {
 
@@ -21,6 +23,8 @@ export class RegisterPage  {
   #changeDetector = inject(ChangeDetectorRef);
   #authService = inject(AuthService);
   #nav = inject(NavController);
+  address = signal<string>("");
+
 
 
   newUsuari = this.#fb.group({
@@ -46,6 +50,14 @@ export class RegisterPage  {
 
     this.newUsuari.get('lat')?.setValue(coordinates.coords.latitude);
     this.newUsuari.get('lng')?.setValue(coordinates.coords.longitude);
+  }
+
+
+  changePlace(result: SearchResult) {
+    // console.log(result.coordinates);
+    this.newUsuari.get('lat')?.setValue(result.coordinates[0]);
+    this.newUsuari.get('lng')?.setValue(result.coordinates[1]);
+    this.address.set(result.address);
   }
 
 

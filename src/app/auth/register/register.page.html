@@ -80,6 +80,11 @@
               formControlName="correu"
             ></ion-input>
           </ion-item>
+
+          <ion-item>
+            <ga-autocomplete (locationChange)="changePlace($event)"></ga-autocomplete>
+          </ion-item>
+
     
           <ion-item>
             <ion-input
@@ -135,6 +140,5 @@
     </ion-col>
   
   </ion-row>
-
 
 </ion-content>

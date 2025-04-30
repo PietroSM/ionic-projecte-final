@@ -6,13 +6,18 @@ import { SearchResult } from "src/app/interfaces/search-result";
   selector: 'ga-autocomplete',
   host: {
     'style': `
-      z-index: 1;
+      z-index: 10;
       display: block;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 50%;
-      background-color: white;
+      margin: 16px auto;
+      background: var(--ion-background-color, #fff);
+      color: var(--ion-text-color, #000);
+      padding: 12px 16px;
+      border: 1px solid var(--ion-border-color, #ccc);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
+      position: relative;
+      font-size: 1.3rem;
     `
   }
 })
@@ -26,7 +31,10 @@ export class GaAutocompleteDirective {
       this.#autoComplete = new GeocoderAutocomplete(
         this.#elementRef.nativeElement,
         "42c7710f83bc41698b841fec7a3b5d2d",
-        { lang: "es" , debounceDelay: 600}
+        { 
+          lang: "es" , 
+          debounceDelay: 600, 
+        }
       );
 
       this.#autoComplete.on("select", (location) => {
