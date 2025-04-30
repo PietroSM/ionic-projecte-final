@@ -1,11 +1,13 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, NavController, IonList, IonItem, IonInput, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonRow, IonCol, IonButtons, IonBackButton } from '@ionic/angular/standalone';
+import { IonContent,ToastController, IonHeader,IonTitle, IonToolbar, NavController, IonList, IonItem, IonInput, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonRow, IonCol, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuari } from 'src/app/interfaces/usuari';
+import { SearchResult } from 'src/app/interfaces/search-result';
+import { GaAutocompleteDirective } from "../../shared/directives/ol-maps/ga-autocomplete.directive";
 
 
 @Component({
@@ -13,14 +15,18 @@ import { Usuari } from 'src/app/interfaces/usuari';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonButtons, IonCol, IonRow, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonCardContent, IonCard, IonBackButton, IonButtons, IonCol, IonRow, IonImg, IonIcon, IonButton, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
 })
 export class RegisterPage  {
 
   #fb = inject(NonNullableFormBuilder);
-  #changeDetector = inject(ChangeDetectorRef);
-  #authService = inject(AuthService);
   #nav = inject(NavController);
+  #changeDetector = inject(ChangeDetectorRef);
+  #toastCtrl = inject(ToastController);
+  #authService = inject(AuthService);
+  
+  address = signal<string>("");
+
 
 
   newUsuari = this.#fb.group({
@@ -49,11 +55,18 @@ export class RegisterPage  {
   }
 
 
+  changePlace(result: SearchResult) {
+    this.newUsuari.get('lat')?.setValue(result.coordinates[0]);
+    this.newUsuari.get('lng')?.setValue(result.coordinates[1]);
+    this.address.set(result.address);
+  }
+
+
   async pickFromGallery() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Photos,
-      height: 200,
-      width: 200,
+      height: 50,
+      width: 50,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -67,8 +80,8 @@ export class RegisterPage  {
     const photo = await Camera.getPhoto({
       source: CameraSource.Camera,
       quality: 90,
-      height: 200,
-      width: 200,
+      height: 50,
+      width: 50,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -78,9 +91,9 @@ export class RegisterPage  {
   }
 
 
-
   
   afegirUsuari(){
+
     const newUsuari : Usuari = {
       alies: this.newUsuari.getRawValue().alies,
       contrasenya: this.newUsuari.getRawValue().contrasenya,
@@ -89,16 +102,28 @@ export class RegisterPage  {
       correu: this.newUsuari.getRawValue().correu,
       imatge: this.newUsuari.getRawValue().imatge,
       lat: this.newUsuari.getRawValue().lat,
-      lng: this.newUsuari.getRawValue().lng
+      lng: this.newUsuari.getRawValue().lng,
+      adresa: this.address(),
     }
 
     this.#authService.registrar(newUsuari)
       .subscribe({
-        next: () => {
+        next: async () => {
+          (await this.#toastCtrl.create({
+            duration: 3000,
+            position: 'bottom',
+            message: 'Usuari registrat corractament!'
+          })).present();
           this.#nav.navigateRoot(['/auth/login']);
         },
-        error: () => {
-          console.log("fatal");
+        error: async (error) => {
+          (await this.#toastCtrl.create({
+            duration: 3000,
+            header: 'Error Registre',
+            position: 'middle',
+            message: Object.values(error.error.errors).join('\n'),
+          })).present();
+          console.log(error.error.errors);
         }
 
       });
