@@ -15,16 +15,23 @@ import { GaAutocompleteDirective } from "../../shared/directives/ol-maps/ga-auto
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
+<<<<<<< HEAD
   imports: [IonCardContent, IonCard, IonBackButton, IonButtons, IonCol, IonRow, IonImg, IonIcon, IonButton, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
+=======
+  imports: [IonBackButton, IonButtons, IonCol, IonRow, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
+>>>>>>> 960948de18993d5b1e9772774debb9ecd4dea43f
 })
 export class RegisterPage  {
 
   #fb = inject(NonNullableFormBuilder);
   #nav = inject(NavController);
+<<<<<<< HEAD
   #changeDetector = inject(ChangeDetectorRef);
   #toastCtrl = inject(ToastController);
   #authService = inject(AuthService);
   
+=======
+>>>>>>> 960948de18993d5b1e9772774debb9ecd4dea43f
   address = signal<string>("");
 
 
@@ -56,6 +63,10 @@ export class RegisterPage  {
 
 
   changePlace(result: SearchResult) {
+<<<<<<< HEAD
+=======
+    // console.log(result.coordinates);
+>>>>>>> 960948de18993d5b1e9772774debb9ecd4dea43f
     this.newUsuari.get('lat')?.setValue(result.coordinates[0]);
     this.newUsuari.get('lng')?.setValue(result.coordinates[1]);
     this.address.set(result.address);
