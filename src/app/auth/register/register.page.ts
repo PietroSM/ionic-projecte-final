@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Usuari } from 'src/app/interfaces/usuari';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { GaAutocompleteDirective } from "../../shared/directives/ol-maps/ga-autocomplete.directive";
-
+ 
 
 @Component({
   selector: 'app-register',
