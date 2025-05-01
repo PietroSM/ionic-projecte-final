@@ -65,8 +65,8 @@ export class RegisterPage  {
   async pickFromGallery() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Photos,
-      height: 50,
-      width: 50,
+      height: 100,
+      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -80,8 +80,8 @@ export class RegisterPage  {
     const photo = await Camera.getPhoto({
       source: CameraSource.Camera,
       quality: 90,
-      height: 50,
-      width: 50,
+      height: 100,
+      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });

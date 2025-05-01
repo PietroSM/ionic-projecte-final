@@ -1,11 +1,8 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,NavController, IonList, IonItem, IonInput, IonGrid, IonButton, IonCol, IonTabButton, IonRow, IonImg } from '@ionic/angular/standalone';
+  IonContent,ToastController, NavController, IonList, IonItem, IonInput, IonGrid, IonButton, IonCol, IonRow, IonImg, IonCardContent, IonCardTitle, IonCardHeader, IonCard } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuariLogin } from 'src/app/interfaces/usuari';
@@ -16,25 +13,22 @@ import { RouterLink } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonImg, IonRow, IonCol, IonButton, IonGrid, IonInput, IonItem, IonList, 
+  imports: [IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonImg, IonRow, IonCol, IonButton, IonGrid, IonInput, IonItem, IonList,
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
-  ],
+    RouterLink],
 })
 export class LoginPage {
 
   #fb = inject(NonNullableFormBuilder);
-  coords = signal<[number, number]>([0, 0]);
   #authService = inject(AuthService);
   #nav = inject(NavController);
-
+  #toastCtrl = inject(ToastController);
   
+  
+  coords = signal<[number, number]>([0, 0]);
 
   newLogin = this.#fb.group({
     alies: ['', [Validators.minLength(4), Validators.required]],
@@ -61,7 +55,6 @@ export class LoginPage {
 
 
   login(){
-
     const newLogin : UsuariLogin = {
       alies: this.newLogin.getRawValue().alies,
       contrasenya: this.newLogin.getRawValue().contrasenya,
@@ -72,11 +65,22 @@ export class LoginPage {
 
     this.#authService.login(newLogin)
       .subscribe({
-        next: () => {
+        next: async () => {
+          (await this.#toastCtrl.create({
+            duration: 3000,
+            position: 'bottom',
+            message: 'Credencials correctes!'
+          })).present();
           this.#nav.navigateRoot(['/home/inici']);
         },
-        error: () => {
-          console.log("fatal");
+        error: async (error) => {
+          (await this.#toastCtrl.create({
+            duration: 3000,
+            header: 'Error',
+            position: 'middle',
+            message: error.error.error,
+          })).present();
+          console.log(error.error.error);
         }
       });
 
