@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Usuari } from 'src/app/interfaces/usuari';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { GaAutocompleteDirective } from "../../shared/directives/ol-maps/ga-autocomplete.directive";
-
+ 
 
 @Component({
   selector: 'app-register',
@@ -56,9 +56,9 @@ export class RegisterPage  {
     const coordinates = await Geolocation.getCurrentPosition({
       enableHighAccuracy: true,
     });
-
-    this.newUsuari.get('lat')?.setValue(coordinates.coords.latitude);
-    this.newUsuari.get('lng')?.setValue(coordinates.coords.longitude);
+    
+    this.newUsuari.get('lat')?.setValue(coordinates.coords.longitude);
+    this.newUsuari.get('lng')?.setValue(coordinates.coords.latitude);
   }
 
 
@@ -76,8 +76,8 @@ export class RegisterPage  {
   async pickFromGallery() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Photos,
-      height: 50,
-      width: 50,
+      height: 100,
+      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -91,8 +91,8 @@ export class RegisterPage  {
     const photo = await Camera.getPhoto({
       source: CameraSource.Camera,
       quality: 90,
-      height: 50,
-      width: 50,
+      height: 100,
+      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });

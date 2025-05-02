@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { InsertarProducte, Producte } from '../interfaces/producte';
+import { IdProducteResponse, InsertarProducte, Producte } from '../interfaces/producte';
 import { map, Observable, pipe } from 'rxjs';
 import { ProductesResponse, SingleProducteResponse } from '../interfaces/respostes';
 
@@ -14,10 +14,10 @@ export class ProducteService {
 
 
 
-  afegirProducte(producte : InsertarProducte): Observable<Producte>{
+  afegirProducte(producte : InsertarProducte): Observable<string>{
     return this.#http
-      .post<SingleProducteResponse>(`${this.#productesURL}/afegir`, producte)
-      .pipe(map((resp) => resp.producte));
+      .post<IdProducteResponse>(`${this.#productesURL}/afegir`, producte)
+      .pipe(map((resp) => resp.id));
   }
 
 
