@@ -11,6 +11,7 @@ export interface InsertarProducte {
     recogida: boolean;
     temporada: string;
     tipus: string;
+    adresa?: string;
 }
 
 
@@ -20,4 +21,8 @@ export interface Producte extends InsertarProducte {
     client: Client;
     distancia?: number;
     propietat?: boolean;
+}
+
+export interface IdProducteResponse {
+    id : string;
 }

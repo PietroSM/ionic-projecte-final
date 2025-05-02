@@ -49,9 +49,9 @@ export class RegisterPage  {
     const coordinates = await Geolocation.getCurrentPosition({
       enableHighAccuracy: true,
     });
-
-    this.newUsuari.get('lat')?.setValue(coordinates.coords.latitude);
-    this.newUsuari.get('lng')?.setValue(coordinates.coords.longitude);
+    
+    this.newUsuari.get('lat')?.setValue(coordinates.coords.longitude);
+    this.newUsuari.get('lng')?.setValue(coordinates.coords.latitude);
   }
 
 
