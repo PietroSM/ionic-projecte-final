@@ -98,63 +98,18 @@
           >
           </ion-checkbox>
         </ion-item>
-            <ion-item>
-              <div class="autocomplete-wrapper">
-                <ga-autocomplete
-                  [value]="address()"
-                  (locationChange)="changePlace($event)"></ga-autocomplete>
-              </div>
-            </ion-item>
-
-        
-            <ion-item>
-              <ion-input
-                name="lat"
-                label="Latitude"
-                labelPlacement="floating"
-                readonly="true"
-                formControlName="lat"
-              ></ion-input>
-            </ion-item>
-        
-            <ion-item>
-              <ion-input
-                name="lng"
-                label="Longitude"
-                labelPlacement="floating"
-                readonly="true"
-                formControlName="lng"
-              ></ion-input>
-            </ion-item>
-        
-            <ion-item>
-              <ion-checkbox
-              name="enviament"
-              justify="start"
-              formControlName="enviament"
-              >Enviament
-              </ion-checkbox>
-            </ion-item>
-        
-            <ion-item>
-              <ion-checkbox
-              name="recogida"
-              justify="start"
-              formControlName="recogida"
-              >Recogida
-              </ion-checkbox>
-            </ion-item>
     
-        <ion-item>
-          <ion-input
-            name="temporada"
-            label="Temporada"
-            labelPlacement="floating"
-            type="text"
-            id="temporada"
-            formControlName="temporada"
-          ></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-select 
+                placeholder="Temporada"
+                id="temporada"
+                formControlName="temporada">
+                <ion-select-option value="Hivern">Hivern</ion-select-option>
+                <ion-select-option value="Tardor">Tardor</ion-select-option>
+                <ion-select-option value="Primavera">Primavera</ion-select-option>
+                <ion-select-option value="Estiu">Estiu</ion-select-option>
+              </ion-select>
+            </ion-item>
     
     
         <ion-item>
@@ -177,36 +132,6 @@
             <ion-icon name="images" slot="start"></ion-icon>
             Galeria
           </ion-button>
-    
-          </ion-list>
-        
-        
-          @if (newProducte.getRawValue().imatge){
-            <ion-img class="imatge-preview" [src]="newProducte.getRawValue().imatge"></ion-img>
-          }
-        
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                @if(this.id()){
-                  <ion-button
-                    type="Submit"
-                  >Editar Producte</ion-button> 
-                } @else {
-                  <ion-button
-                    type="Submit"
-                    [disabled]="newProducte.invalid"
-                  >Afegir Producte</ion-button>  
-                }
-
-              </ion-col>
-        
-        
-            </ion-row>
-          </ion-grid>
-        
-        
-          </form>
 
 
       </ion-list>
@@ -231,6 +156,10 @@
     
     
       </form>
+
+        </ion-card-content>
+      </ion-card>
+
 
 
     </ion-col>
