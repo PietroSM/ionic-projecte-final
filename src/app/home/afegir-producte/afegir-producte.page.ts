@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonCheckbox, IonLabel, IonButton, IonIcon, IonImg, IonGrid, IonCol, IonRow, IonButtons, IonBackButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, NavController, IonSelect, IonSelectOption , ToastController, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonCheckbox, IonButton, IonIcon, IonImg, IonGrid, IonCol, IonRow, IonButtons, IonCardContent, IonCard } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { InsertarProducte } from 'src/app/interfaces/producte';
+import { InsertarProducte, Producte } from 'src/app/interfaces/producte';
 import { ProducteService } from 'src/app/services/producte.service';
 
 
@@ -13,7 +13,7 @@ import { ProducteService } from 'src/app/services/producte.service';
   templateUrl: './afegir-producte.page.html',
   styleUrls: ['./afegir-producte.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonButtons, IonRow, IonCol, IonGrid, IonImg, IonIcon, IonButton, IonLabel, IonCheckbox, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonCard, IonCardContent, IonButtons, IonRow, IonCol, IonSelect, IonSelectOption, IonGrid, IonImg, IonIcon, IonButton, IonCheckbox, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
 })
 export class AfegirProductePage {
 
@@ -22,6 +22,10 @@ export class AfegirProductePage {
   #changeDetector = inject(ChangeDetectorRef);
   #producteService = inject(ProducteService);
   
+
+
+  id = input.required<string>();
+  producte = input.required<Producte>();
 
   newProducte = this.#fb.group({
     nom: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
@@ -39,6 +43,25 @@ export class AfegirProductePage {
 
   constructor() {
     this.getLocation();
+
+
+    effect(() => {
+      if(this.id()){
+        this.newProducte.get('nom')?.setValue(this.producte().nom);
+        this.newProducte.get('stock')?.setValue(this.producte().stock);
+        this.newProducte.get('preu')?.setValue(this.producte().preu);
+        this.newProducte.get('enviament')?.setValue(this.producte().enviament);
+        this.newProducte.get('recogida')?.setValue(this.producte().recogida);
+        this.newProducte.get('temporada')?.setValue(this.producte().temporada);
+        this.newProducte.get('tipus')?.setValue(this.producte().tipus);
+        this.newProducte.get('imatge')?.setValue(this.producte().imatge);
+        this.newProducte.get('lat')?.setValue(this.producte().lat);
+        this.newProducte.get('lng')?.setValue(this.producte().lng);
+        this.address.set(this.producte().adresa!);
+      }
+    });
+
+
   }
 
 

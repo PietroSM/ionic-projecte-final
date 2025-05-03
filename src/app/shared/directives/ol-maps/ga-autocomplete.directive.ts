@@ -1,4 +1,4 @@
-import { Directive, inject, ElementRef, output, afterNextRender } from "@angular/core";
+import { Directive, inject, ElementRef, output, afterNextRender, input } from "@angular/core";
 import { GeocoderAutocomplete } from "@geoapify/geocoder-autocomplete";
 import { SearchResult } from "src/app/interfaces/search-result";
 
@@ -26,6 +26,8 @@ export class GaAutocompleteDirective {
   #autoComplete!: GeocoderAutocomplete;
   locationChange = output<SearchResult>();
 
+  value = input<string>();
+
   constructor() {
     afterNextRender(() => {
       this.#autoComplete = new GeocoderAutocomplete(
@@ -36,6 +38,10 @@ export class GaAutocompleteDirective {
           debounceDelay: 600, 
         }
       );
+
+      if(this.value()){
+        this.#autoComplete.setValue(this.value()!);
+      }
 
       this.#autoComplete.on("select", (location) => {
         this.locationChange.emit({

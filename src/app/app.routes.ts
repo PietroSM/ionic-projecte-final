@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { logoutActiveGuard } from './shared/guards/logout-active.guard';
 import { loginActiveGuard } from './shared/guards/login-active.guard';
 import { comandesResolver } from './shared/resolvers/comandes.resolver';
+import { productesResolver } from './shared/resolvers/productes.resolver';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,16 @@ export const routes: Routes = [
     loadComponent: () => 
       import('./producte/producte-card/producte-card.page')
       .then( m => m.ProducteCardPage)
+  },
+  {
+    path: 'producte/:id/edit',
+    canActivate: [loginActiveGuard],
+    resolve: {
+      producte: productesResolver,
+    },
+    loadComponent: () =>
+      import('./home/afegir-producte/afegir-producte.page')
+      .then((m) => m.AfegirProductePage)
   },
   {
     path: 'producte/:id',

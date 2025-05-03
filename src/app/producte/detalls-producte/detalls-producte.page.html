@@ -65,7 +65,7 @@
     <ion-row class="ion-justify-content-center">
 
       <ion-col size="auto" class="ion-text-center">
-        <ion-button (click)="editarProducte()">
+        <ion-button [routerLink]="['/producte',producte()?.id, 'edit']" >
           <ion-icon name="create-outline" slot="start"></ion-icon>          
           Editar
         </ion-button>

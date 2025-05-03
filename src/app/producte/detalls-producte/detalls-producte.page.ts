@@ -8,6 +8,7 @@ import { ProducteCardPage } from "../../producte/producte-card/producte-card.pag
 import { ModalAfegirProductePage } from '../modal-afegir-producte/modal-afegir-producte.page';
 import { CistellaService } from 'src/app/services/cistella.service';
 import { XatService } from 'src/app/services/xat.service';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { XatService } from 'src/app/services/xat.service';
   templateUrl: './detalls-producte.page.html',
   styleUrls: ['./detalls-producte.page.scss'],
   standalone: true,
-  imports: [IonGrid, IonCardContent, IonButton, IonIcon, IonCol, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCard, IonRow, IonImg, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
+  imports: [IonGrid, IonCardContent, RouterLink, IonButton, IonIcon, IonCol, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCard, IonRow, IonImg, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
 })
 export class DetallsProductePage{
 
@@ -64,7 +65,7 @@ export class DetallsProductePage{
   }
 
   editarProducte(){
-
+    
   }
 
 
