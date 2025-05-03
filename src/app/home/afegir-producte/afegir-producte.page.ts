@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, NavController, IonSelect, IonSelectOption , ToastController, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonCheckbox, IonButton, IonIcon, IonImg, IonGrid, IonCol, IonRow, IonButtons, IonCardContent, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, NavController, IonSelect, IonSelectOption , ToastController, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonCheckbox, IonButton, IonIcon, IonImg, IonGrid, IonCol, IonRow, IonButtons, IonCardContent, IonCard, IonBackButton } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { InsertarProducte, Producte } from 'src/app/interfaces/producte';
@@ -13,7 +13,7 @@ import { ProducteService } from 'src/app/services/producte.service';
   templateUrl: './afegir-producte.page.html',
   styleUrls: ['./afegir-producte.page.scss'],
   standalone: true,
-  imports: [IonCard, IonCardContent, IonButtons, IonRow, IonCol, IonSelect, IonSelectOption, IonGrid, IonImg, IonIcon, IonButton, IonCheckbox, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
+  imports: [IonBackButton, IonCard, IonCardContent, IonButtons, IonRow, IonCol, IonSelect, IonSelectOption, IonGrid, IonImg, IonIcon, IonButton, IonCheckbox, IonInput, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, GaAutocompleteDirective]
 })
 export class AfegirProductePage {
 
