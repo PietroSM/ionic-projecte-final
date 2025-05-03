@@ -134,27 +134,51 @@ export class AfegirProductePage {
       adresa: this.address()
     };
 
+    if(this.id()){
+      this.#producteService.putProducte(nouProducte, this.id())
+        .subscribe({
+          next: async () => {
+            (await this.#toastCtrl.create({
+              duration: 3000,
+              position: 'bottom',
+              message: 'Producte Editat corractament!'
+            })).present();
+            this.#nav.navigateRoot(['producte/' + this.id()]);
+          },
+          error: async (error) => {
+            (await this.#toastCtrl.create({
+              duration: 3000,
+              header: 'Error Editar Producte',
+              position: 'middle',
+              message: Object.values(error.error.errors).join('\n'),
+            })).present();
+          }
 
-    this.#producteService.afegirProducte(nouProducte)
-      .subscribe({
-        next: async (resposta) => {
-          (await this.#toastCtrl.create({
-            duration: 3000,
-            position: 'bottom',
-            message: 'Producte afegit corractament!'
-          })).present();
-          this.#nav.navigateRoot(['producte/' + resposta]);
-        },
-        error: async (error) => {
-          (await this.#toastCtrl.create({
-            duration: 3000,
-            header: 'Error Afegir Producte',
-            position: 'middle',
-            message: Object.values(error.error.errors).join('\n'),
-          })).present();
-        }
+      });
 
-    });
+    }else{
+      this.#producteService.afegirProducte(nouProducte)
+        .subscribe({
+          next: async (resposta) => {
+            (await this.#toastCtrl.create({
+              duration: 3000,
+              position: 'bottom',
+              message: 'Producte afegit corractament!'
+            })).present();
+            this.#nav.navigateRoot(['producte/' + resposta]);
+          },
+          error: async (error) => {
+            (await this.#toastCtrl.create({
+              duration: 3000,
+              header: 'Error Afegir Producte',
+              position: 'middle',
+              message: Object.values(error.error.errors).join('\n'),
+            })).present();
+          }
+
+      });
+    }
+
 
 
   }

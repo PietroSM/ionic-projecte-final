@@ -27,6 +27,10 @@ export class ProducteService {
       .pipe(map((resp) => resp));
   }
 
+  putProducte(producte: InsertarProducte, id: string): Observable<void> {
+    return this.#http
+      .put<void>(`${this.#productesURL}/${id}/edit`, producte);
+  }
 
   getProducte(id: string): Observable<Producte>{
     return this.#http
@@ -34,10 +38,6 @@ export class ProducteService {
       .pipe(map((resp) => resp.producte));
   }
 
-  putProducte(producte: InsertarProducte, id: string): Observable<void> {
-    return this.#http
-      .put<void>(`${this.#productesURL}/${id}/edit`, producte);
-  }
 
 
 }

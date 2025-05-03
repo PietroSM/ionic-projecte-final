@@ -63,78 +63,8 @@
                 formControlName="preu"
               ></ion-input>
             </ion-item>
-    
-            <ion-item>
-              <div class="autocomplete-wrapper">
-                <ga-autocomplete (locationChange)="changePlace($event)"></ga-autocomplete>
-              </div>
-            </ion-item>
-        
-            <ion-item>
-              <ion-input
-                name="lat"
-                label="Latitude"
-                labelPlacement="floating"
-                readonly="true"
-                formControlName="lat"
-              ></ion-input>
-            </ion-item>
-        
-            <ion-item>
-              <ion-input
-                name="lng"
-                label="Longitude"
-                labelPlacement="floating"
-                readonly="true"
-                formControlName="lng"
-              ></ion-input>
-            </ion-item>
-        
-            <ion-item>
-              <ion-checkbox
-              name="enviament"
-              justify="start"
-              formControlName="enviament"
-              >Enviament
-              </ion-checkbox>
-            </ion-item>
-        
-            <ion-item>
-              <ion-checkbox
-              name="recogida"
-              justify="start"
-              formControlName="recogida"
-              >Recogida
-              </ion-checkbox>
-            </ion-item>
-    
-        <ion-item>
-          <ion-input
-            name="lng"
-            label="Longitude"
-            labelPlacement="floating"
-            readonly="true"
-            formControlName="lng"
-          ></ion-input>
-        </ion-item>
-    
-        <ion-item>
-          <label for="">Enviament </label>
-          <ion-checkbox
-          name="enviament"
-          formControlName="enviament"
-          >
-          </ion-checkbox>
-        </ion-item>
-    
-        <ion-item>
-          <label for="">Recogida </label>
-          <ion-checkbox
-          name="recogida"
-          formControlName="recogida"
-          >
-          </ion-checkbox>
-        </ion-item>
+      
+
             <ion-item>
               <div class="autocomplete-wrapper">
                 <ga-autocomplete
@@ -205,18 +135,6 @@
               }
               </ion-select>
             </ion-item>
-        
-      
-            <ion-row class="ion-justify-content-around camera-buttons">
-              <ion-button color="secondary" (click)="takePhoto()">
-                <ion-icon name="camera" slot="start"></ion-icon>
-                Càmera
-              </ion-button>
-              <ion-button color="tertiary" (click)="pickFromGallery()">
-                <ion-icon name="images" slot="start"></ion-icon>
-                Galeria
-              </ion-button>
-            </ion-row>
     
   
           <ion-button color="secondary" (click)="takePhoto()">
