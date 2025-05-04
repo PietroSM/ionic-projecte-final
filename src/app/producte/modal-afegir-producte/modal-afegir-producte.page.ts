@@ -23,7 +23,7 @@ import {
   IonButtons,
   IonButton,
   IonIcon,
-  IonItem, IonInput } from '@ionic/angular/standalone';
+  IonItem, IonInput, IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { Producte } from 'src/app/interfaces/producte';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
@@ -34,7 +34,7 @@ import { InsertarProducteCistella } from 'src/app/interfaces/cistella';
   templateUrl: './modal-afegir-producte.page.html',
   styleUrls: ['./modal-afegir-producte.page.scss'],
   standalone: true,
-  imports: [IonInput, 
+  imports: [IonCardContent, IonCard, IonInput, 
     IonItem,
     IonIcon,
     IonButton,
@@ -53,7 +53,7 @@ export class ModalAfegirProductePage {
   #modalCtrl = inject(ModalController);
   
   quantitat =  signal(0);
-  preu = computed(() => this.quantitat() * 3);
+  preu = computed(() => this.quantitat() * this.producte().preu);
   
   actualitzarQuantitat(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -66,15 +66,12 @@ export class ModalAfegirProductePage {
   }
 
 
-
-
   afegirCistella() {
     const dadesAfegir : InsertarProducteCistella = {
       idProducte: this.producte().id,
       quantitat: this.quantitat(),
       preuTotal: this.preu()
     }
-
 
     this.#modalCtrl.dismiss({ dadesAfegir: dadesAfegir });
   }

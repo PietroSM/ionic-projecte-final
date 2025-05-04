@@ -1,27 +1,38 @@
 <ion-header>
-  <ion-toolbar color="primary">
-      <ion-buttons slot="end">
-          <ion-button (click)="close()">
-              <ion-icon slot="icon-only" name="close"></ion-icon>
-          </ion-button>
-      </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-button (click)="close()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
+  
+<ion-content [fullscreen]="true" class="quantitat-page ion-padding">
+  
+    <ion-card class="quantitat-card">
+        <ion-card-content>
 
-<ion-content [fullscreen]="true">
-  <ion-item class="ion-margin-bottom">
-      <ion-input
-          type="number"
-          label="Quantitat"
-          labelPlacement="floating"
-          [value]="quantitat()"
-          (input)="actualitzarQuantitat($event)"
-      ></ion-input>
-  </ion-item>
+        <ion-item class="input-quantitat">
+            <ion-input
+            type="number"
+            label="Quantitat en KG"
+            labelPlacement="floating"
+            [value]="quantitat()"
+            (input)="actualitzarQuantitat($event)"
+            ></ion-input>
+        </ion-item>
 
-  <h2>Preu {{ preu() }}</h2>
+        <div class="preu-container">
+            <h2 class="preu-text">Preu: {{ preu() }} €</h2>
+        </div>
 
-  <ion-button expand="full" type="button" color="primary" (click)="afegirCistella()">
-      Afegir a la Cistella
-  </ion-button>
+        <ion-button expand="block" (click)="afegirCistella()">
+            Afegir a la Cistella
+        </ion-button>
+
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
+  

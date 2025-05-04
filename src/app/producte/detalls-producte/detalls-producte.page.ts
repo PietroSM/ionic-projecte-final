@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, numberAttribute, signal} from '@angular/core';
+import { Component, computed, effect, inject, input, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, ModalController, IonTitle, IonToolbar, IonButtons, IonBackButton, IonImg, IonRow, IonCard, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCol, IonIcon, IonButton, IonCardContent, IonGrid } from '@ionic/angular/standalone';
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './detalls-producte.page.html',
   styleUrls: ['./detalls-producte.page.scss'],
   standalone: true,
-  imports: [IonGrid, IonCardContent, RouterLink, IonButton, IonIcon, IonCol, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCard, IonRow, IonImg, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
+  imports: [IonGrid, IonCardContent, RouterLink, IonButton, IonIcon, IonCol, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCard, IonRow, IonImg, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class DetallsProductePage{
 
@@ -64,9 +64,6 @@ export class DetallsProductePage{
     }
   }
 
-  editarProducte(){
-    
-  }
 
 
   esborrarProducte(){
@@ -76,6 +73,8 @@ export class DetallsProductePage{
   async afegirCistella(){
     const modal = await this.#modalCtrl.create({
       component: ModalAfegirProductePage,
+      breakpoints: [0, 0.5, 0.8],
+      initialBreakpoint: 0.4,
       componentProps: { producte: this.producte }
     });
 

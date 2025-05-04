@@ -1,0 +1,42 @@
+ion-toolbar{
+    color: white;
+    --background: #6e5d99;
+}
+
+
+
+.quantitat-page {
+    --background: #81bd72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .quantitat-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .input-quantitat {
+    margin-bottom: 20px;
+  }
+  
+  .preu-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .preu-text {
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  ion-button {
+    border-radius: 12px;
+    font-weight: bold;
+    --background: #6e5d99;
+  }
+  
