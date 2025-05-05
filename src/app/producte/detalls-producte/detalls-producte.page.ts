@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject, input, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, ModalController, IonTitle, IonToolbar, IonButtons, IonBackButton, IonImg, IonRow, IonCard, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCol, IonIcon, IonButton, IonCardContent, IonGrid } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, NavController, ToastController, AlertController, ModalController, IonTitle, IonToolbar, IonButtons, IonBackButton, IonImg, IonRow, IonCard, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCol, IonIcon, IonButton, IonCardContent, IonGrid } from '@ionic/angular/standalone';
 import { ProducteService } from 'src/app/services/producte.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { ProducteCardPage } from "../../producte/producte-card/producte-card.page";
@@ -24,6 +24,11 @@ export class DetallsProductePage{
   #cistellaService = inject(CistellaService);
   #xatService = inject(XatService);
   #modalCtrl = inject(ModalController);
+  #alertCtrl = inject(AlertController);
+  #toastCtrl = inject(ToastController);
+  #nav = inject(NavController);
+
+
   iconEstacio = signal<string>("");
   
 
@@ -66,8 +71,45 @@ export class DetallsProductePage{
 
 
 
-  esborrarProducte(){
+  async esborrarProducte(){
 
+    const alerta = await this.#alertCtrl.create({
+      header: 'Esborrar Producte',
+      message: 'Estàs segura que vols esborrar aquest producte?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.#producteService
+              .deleteProducte(this.id())
+              .subscribe({
+                next: async () => {
+                  (await this.#toastCtrl.create({
+                    duration: 3000,
+                    header: 'Error',
+                    position: 'middle',
+                    message: 'Producte esborrat corractament',
+                  })).present();
+                  this.#nav.navigateRoot(['/home/inici']);
+                },
+                error: async (error) => {
+                  (await this.#toastCtrl.create({
+                    duration: 3000,
+                    header: 'Error',
+                    position: 'middle',
+                    message: error.error.error,
+                  })).present();
+                }
+              });
+          }
+        },
+        {
+          text: 'cancel·lar',
+          role: 'cancel'
+        }
+      ],
+    });
+    alerta.present();
   }
 
   async afegirCistella(){

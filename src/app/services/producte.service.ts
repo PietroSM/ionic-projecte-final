@@ -39,5 +39,10 @@ export class ProducteService {
   }
 
 
+  deleteProducte(id: string): Observable<void>{
+    return this.#http
+      .put<void>(`${this.#productesURL}/borrar`, {id: id});
+  }
+
 
 }
