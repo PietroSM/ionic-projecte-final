@@ -22,6 +22,7 @@ export interface SingleComandaResponse {
 
 export interface ProductesResponse {
     productes: Producte[];
+    niHaMes: boolean;
 }
 
 

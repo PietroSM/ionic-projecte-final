@@ -19,13 +19,13 @@ export class ProductesPropisPage {
 
 
   constructor() {
-    this.#productesService.getProductes()
-    .subscribe((productes) => {
-      const productesFiltrats = productes.productes.filter(
-        element => element.propietat === true 
-      );
-      this.productes.set(productesFiltrats);
-    });
+    // this.#productesService.getProductes()
+    // .subscribe((productes) => {
+    //   const productesFiltrats = productes.productes.filter(
+    //     element => element.propietat === true 
+    //   );
+    //   this.productes.set(productesFiltrats);
+    // });
   }
 
 }

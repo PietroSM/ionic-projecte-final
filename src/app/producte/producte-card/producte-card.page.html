@@ -1,17 +1,17 @@
-<ion-card [routerLink]="['/producte/'+producte().id]">
+<ion-card [routerLink]="['/producte/'+producte().id]" class="producte-card">
   <ion-grid>
-    <ion-row>
+    <ion-row class="ion-align-items-center">
 
       <ion-col size="5" size-md="3">
-        <img [src]="producte().imatge" alt="Imagen de ejemplo" style="width: 100%; border-radius: 10px;">
+        <img [src]="producte().imatge" alt="Imagen de ejemplo" class="producte-imatge">
       </ion-col>
 
       <ion-col size="7" size-md="9">
         <ion-card-header>
-          <ion-card-title>{{producte().nom}}</ion-card-title>
-          <ion-card-subtitle>Stock: {{producte().stock}} Kg</ion-card-subtitle>
-          <ion-card-subtitle>Preu: {{producte().preu}} €/Kg</ion-card-subtitle>
-          <ion-card-subtitle>Ubicació: Cartago </ion-card-subtitle>
+          <ion-card-title class="producte-titol">{{producte().nom}}</ion-card-title>
+          <ion-card-subtitle class="producte-subtitle">Stock: {{producte().stock}} Kg</ion-card-subtitle>
+          <ion-card-subtitle class="producte-subtitle">Preu: {{producte().preu}} €/Kg</ion-card-subtitle>
+          <ion-card-subtitle class="producte-subtitle">Ubicació: {{producte().adresa}} </ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content class="icon-container">

@@ -21,9 +21,13 @@ export class ProducteService {
   }
 
 
-  getProductes(): Observable<ProductesResponse>{
+  getProductes(pagina: number, search: string): Observable<ProductesResponse>{
+    const params = new URLSearchParams({
+      pagina: String(pagina),
+      search
+    });
     return this.#http
-      .get<ProductesResponse>(this.#productesURL)
+      .get<ProductesResponse>(`${this.#productesURL}?${params.toString()}`)
       .pipe(map((resp) => resp));
   }
 

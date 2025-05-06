@@ -1,14 +1,20 @@
-
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-searchbar
+      debounce="500"
+      [(ngModel)]="search"
+      (ionInput)="filterItems()"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
 
-
-  <ion-searchbar
-    debounce="500"
-    [(ngModel)]="search"
-    (ionInput)="filterItems()"
-  >
-  </ion-searchbar>
+  <ion-refresher #refresher slot="fixed" (ionRefresh)="reloadProductes(refresher)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
 
 
 
@@ -18,4 +24,20 @@
 
     </app-producte-card>
   }
+
+  <ion-infinite-scroll
+  #infinite
+  (ionInfinite)="loadMoreItems(infinite)"
+  [disabled]="finished"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregant mes productes..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+
+
 </ion-content>
