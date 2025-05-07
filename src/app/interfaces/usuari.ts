@@ -9,6 +9,7 @@ export interface Usuari {
     lat: number;
     lng: number;
     adresa?: string;
+    propietat?: string;
 }
 
 

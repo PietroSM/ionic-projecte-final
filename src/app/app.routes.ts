@@ -98,4 +98,15 @@ export const routes: Routes = [
     path: 'xat/:id',
     loadComponent: () => import('./xat/xat-detail/xat-detail.page').then( m => m.XatDetailPage)
   },
+  {
+    path: 'perfil-page',
+    loadComponent: () => import('./perfil/perfil-page/perfil-page.page').then( m => m.PerfilPagePage)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () =>
+      import('./perfil/perfil.routes').then((m) => m.perfilRoutes),
+    canActivate: [loginActiveGuard]
+  },
+
 ];
