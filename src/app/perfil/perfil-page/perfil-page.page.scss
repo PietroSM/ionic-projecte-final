@@ -1,0 +1,57 @@
+ion-toolbar {
+  color: white;
+  --background: #6e5d99;
+
+  .imatge-top {
+    height: 40px;
+  }
+}
+
+ion-content {
+    --background: #81bd72;
+}
+
+.titol-principal {
+    font-size: 1.5rem;
+    color: #6e5d99;
+    font-weight: bold;
+}
+
+.perfil-card {
+  max-width: 400px;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.perfil-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 20px auto 10px;
+}
+
+.perfil-info {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.perfil-info ion-icon {
+  font-size: 20px;
+  color: #3880ff;
+}
+
+.perfil-propietat {
+  margin-top: 20px;
+}
+
+
+ion-button {
+    --border-radius: 5px;
+    --background: #6e5d99;
+}

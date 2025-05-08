@@ -50,3 +50,7 @@ export interface SingleIdClient {
 export interface SingleClientResponse {
     client: Client;
 }
+
+export interface SingleClientResponse {
+    usuari: Usuari;
+}
