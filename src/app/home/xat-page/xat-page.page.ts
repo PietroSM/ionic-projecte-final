@@ -1,7 +1,7 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonCard, IonRow, IonGrid, IonButton, IonCol, IonCardSubtitle, IonCardTitle, IonCardHeader, IonButtons, IonBackButton, IonImg } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonRow, IonCol, IonCardSubtitle, IonCardTitle, IonCardHeader, IonButtons, IonImg } from '@ionic/angular/standalone';
 import { Missatge, Xat } from 'src/app/interfaces/xat';
 import { XatService } from 'src/app/services/xat.service';
 import { RouterLink } from '@angular/router';
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './xat-page.page.html',
   styleUrls: ['./xat-page.page.scss'],
   standalone: true,
-  imports: [IonImg, IonBackButton, RouterLink, IonButtons, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCol, IonButton, IonGrid, IonRow, IonCard, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonImg, RouterLink, IonButtons, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCol, IonRow, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class XatPagePage {
 

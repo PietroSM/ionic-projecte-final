@@ -7,38 +7,24 @@ ion-toolbar{
     --background: #6e5d99;
 }
 
-
-.header {
-    // --background: #c679ac;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    // border-radius: 5px;
-    // border: 1px solid #000000;
-
+ion-content {
+    --background: #81bd72;
 }
 
 
-
-
-.item-cistella {
-    --background: #ead1c0;
-    border-radius: 3px;
-    border: 0.5px solid #000000;
-    margin: 0.5rem;
-    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-}
-.row-centered {
-    align-items: center;
+.card-general{
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
 }
 
-.row-centered ion-col {
-    display: flex;
-    align-items: center;
+.col-centrat {
     text-align: center;
-    height: 100%; 
-    justify-content: center;
+    font-size: 1rem;
 }
+
 
 .btn-fixed {
     position: fixed;

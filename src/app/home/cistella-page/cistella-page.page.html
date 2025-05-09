@@ -7,66 +7,63 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-list>
+
+  <ion-card class="card-general">
     @if (this.cistella()) {
-      <ion-item class="header">
+      <ion-list>
         <ion-grid>
-          <ion-row class="row-centered">
-            <ion-col><strong>Nom</strong></ion-col>
-            <ion-col><strong>Quantitat</strong></ion-col>
-            <ion-col><strong>Preu</strong></ion-col>
-            <ion-col></ion-col> 
+          <ion-row>
+            <ion-col class="col-centrat"><strong>Nom</strong></ion-col>
+            <ion-col class="col-centrat"><strong>Quantitat</strong></ion-col>
+            <ion-col class="col-centrat"><strong>Preu</strong></ion-col>
+            <ion-col class="col-centrat"></ion-col>
           </ion-row>
         </ion-grid>
-      </ion-item>
-
-
-      @for (item of cistella()!.productes; track $index) {
-        <ion-item class="item-cistella">
-          <ion-grid>
-            <ion-row class="row-centered">
-              <ion-col>{{ item.producte.nom }}</ion-col>
-              <ion-col>{{ item.quantitat }}</ion-col>
-              <ion-col>{{ item.preu | currency:'EUR' }}</ion-col>
-              <ion-col>
-                <ion-button
+        
+        @for (item of cistella()!.productes; track $index) {
+          <ion-item>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="col-centrat">{{ item.producte.nom }}</ion-col>
+                <ion-col class="col-centrat">{{ item.quantitat }}</ion-col>
+                <ion-col class="col-centrat">{{ item.preu | currency:'EUR' }}</ion-col>
+                <ion-col class="col-centrat"><ion-button
                   fill="clear"
                   color="danger"
                   (click)="eliminarProducte()">
-                  <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-                </ion-button>
-              </ion-col>
+                <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+              </ion-button></ion-col>
             </ion-row>
           </ion-grid>
         </ion-item>
       }
-      <ion-item class="header">
-        <ion-grid>
-          <ion-row class="row-centered">
-            <ion-col></ion-col>
-            <ion-col></ion-col>
-            <ion-col class="text-contorn"><strong>Total: {{ cistella()?.preuTotal| currency:'EUR' }}</strong></ion-col>
-            <ion-col></ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+    </ion-list>
 
-      
-    } @else {
-      <ion-item>
-        <ion-label>Cistella buida 🧺</ion-label>
-      </ion-item>
-    }
-  </ion-list>
-  
-  <div class="btn-fixed">
-    <ion-button
-      class="btn-realitzar"
-      type="button"
-      (click)="realitzarComanda()"
-    >Realitzar Comanda</ion-button>
-  </div>
-  
+    <ion-item class="header">
+      <ion-grid>
+        <ion-row class="row-centered">
+          <ion-col></ion-col>
+          <ion-col class="text-contorn"><strong>Total: {{ cistella()?.preuTotal| currency:'EUR' }}</strong></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
 
+    
+  }@else {
+    <ion-item>
+      <ion-label>Cistella buida 🧺</ion-label>
+    </ion-item>
+  }
+</ion-card>
+
+
+<div class="btn-fixed">
+  <ion-button
+    class="btn-realitzar"
+    type="button"
+    (click)="realitzarComanda()"
+  >Realitzar Comanda</ion-button>
+</div>
 
 </ion-content>

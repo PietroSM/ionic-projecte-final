@@ -9,9 +9,12 @@ ion-toolbar{
   border-radius: 10px;
 }
 
+ion-content {
+  --background: #81bd72;
+}
+
 
 .contingut-xats {
-    --background: #f9f9fb;
     padding: 16px;
   }
   
@@ -21,12 +24,8 @@ ion-toolbar{
     padding: 12px;
     margin-bottom: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
   }
-  
-  .xat-card:hover {
-    transform: translateY(-2px);
-  }
+
   
   .xat-foto {
     width: 100%;

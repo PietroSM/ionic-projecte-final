@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './profile-options.page.html',
   styleUrls: ['./profile-options.page.scss'],
   standalone: true,
-  imports: [IonCardTitle, IonCardHeader, IonIcon, IonButton, IonCol, IonRow, IonGrid, IonCard, IonImg, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink]
+  imports: [IonCardTitle, IonCardHeader, IonIcon, IonCol, IonRow, IonGrid, IonCard, IonImg, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink]
 })
 export class ProfileOptionsPage implements OnInit {
 
