@@ -1,0 +1,109 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="auth/login"></ion-back-button>
+    </ion-buttons>    
+    <ion-title slot="end">WALLA-EDIT</ion-title>
+    <ion-buttons slot="end">
+      <ion-img src="assets/images/logo_taronja.svg" class="imatge-top"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col size="12" size-md="6" class="ion-text-center">
+      <ion-card>
+        <ion-card-content>
+          <form 
+            action="#"
+            #formPerfil="ngForm"
+            (ngSubmit)="editarPerfil()"
+            [formGroup]="editUsuari"
+            id="form-perfil"
+            role="form"
+          >
+            <ion-list>
+              <ion-item>
+                <ion-input
+                name="nom"
+                label="Nom"
+                labelPlacement="floating"
+                type="text"
+                id="nom"
+                formControlName="nom"
+                ></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-input
+                name="cognom"
+                label="Cognom"
+                labelPlacement="floating"
+                type="text"
+                id="cognom"
+                formControlName="cognom"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                name="correu"
+                label="Correu"
+                labelPlacement="floating"
+                type="email"
+                id="correu"
+                formControlName="correu"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <div class="autocomplete-wrapper">
+                  <ga-autocomplete
+                    [value]="adresa()"
+                    (locationChange)="changePlace($event)"
+                  ></ga-autocomplete>
+                </div>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                  name="lat"
+                  label="Latitude"
+                  labelPlacement="floating"
+                  readonly="true"
+                  formControlName="lat"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input
+                  name="lng"
+                  label="Longitude"
+                  labelPlacement="floating"
+                  readonly="true"
+                  formControlName="lng"
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-button type="Submit" [disabled]="editUsuari.invalid">Editar Perfil</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+
+
+
+
+</ion-content>

@@ -11,7 +11,6 @@ import { SingleClientResponse } from '../interfaces/respostes';
 })
 export class XatService {
 
-  // #socket: Socket;
   #http = inject(HttpClient);
   #socket = inject(Socket);
   #xatURL = 'xat';

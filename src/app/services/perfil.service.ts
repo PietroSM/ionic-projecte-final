@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Usuari } from '../interfaces/usuari';
+import { UpdateUsuari, Usuari } from '../interfaces/usuari';
 import { SingleUsuariResponse } from '../interfaces/respostes';
 
 @Injectable({
@@ -20,6 +20,11 @@ export class PerfilService {
       .pipe(map((resp) => resp.usuari));
   }
 
+
+  putPerfil(dades: UpdateUsuari, id: string): Observable<void> {
+    return this.#http
+      .put<void>(`${this.#perfilURL}/${id}/edit`, dades);
+  }
 
 
 }

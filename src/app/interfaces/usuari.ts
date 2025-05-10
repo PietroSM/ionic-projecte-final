@@ -32,3 +32,11 @@ export interface Client {
 }
 
 
+export interface UpdateUsuari {
+    nom: string;
+    cognom: string;
+    correu: string;
+    adresa: string;
+    lat: number;
+    lng: number;
+}
