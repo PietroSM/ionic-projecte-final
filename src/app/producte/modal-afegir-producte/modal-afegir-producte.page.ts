@@ -1,32 +1,25 @@
 import {
   Component,
   computed,
-  effect,
   inject,
   input,
-  OnInit,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormsModule,
-  NonNullableFormBuilder,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import {
   IonContent,
   ModalController,
   IonHeader,
-  IonTitle,
   IonToolbar,
   IonButtons,
   IonButton,
   IonIcon,
   IonItem, IonInput, IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { Producte } from 'src/app/interfaces/producte';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
 import { InsertarProducteCistella } from 'src/app/interfaces/cistella';
 
 @Component({
@@ -34,19 +27,17 @@ import { InsertarProducteCistella } from 'src/app/interfaces/cistella';
   templateUrl: './modal-afegir-producte.page.html',
   styleUrls: ['./modal-afegir-producte.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCard, IonInput, 
+  imports: [IonCardContent, IonCard, IonInput,
     IonItem,
     IonIcon,
     IonButton,
     IonButtons,
     IonContent,
     IonHeader,
-    IonTitle,
     IonToolbar,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule],
 })
 export class ModalAfegirProductePage {
   producte = input.required<Producte>();

@@ -27,4 +27,15 @@ export class PerfilService {
   }
 
 
+  putImatge(imatge: string, id: string): Observable<void> {
+    return this.#http
+      .put<void>(`${this.#perfilURL}/${id}/imatge`, {imatge});
+  }
+
+  putContrasenya(contrasenya: string, id: string): Observable<void> {
+    return this.#http
+      .put<void>(`${this.#perfilURL}/${id}/contrasenya`,{contrasenya});
+  }
+
+
 }

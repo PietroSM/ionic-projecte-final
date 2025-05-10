@@ -34,7 +34,7 @@ export class GaAutocompleteDirective {
         this.#elementRef.nativeElement,
         "42c7710f83bc41698b841fec7a3b5d2d",
         { 
-          lang: "es" , 
+          lang: "ca" , 
           debounceDelay: 600, 
         }
       );

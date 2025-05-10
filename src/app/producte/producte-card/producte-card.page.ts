@@ -2,10 +2,6 @@ import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
   IonCard,
   IonGrid,
   IonRow,
@@ -13,7 +9,6 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardContent,
-  IonButton,
   IonCardTitle,
   IonIcon,
 } from '@ionic/angular/standalone';
@@ -28,7 +23,6 @@ import { RouterLink } from '@angular/router';
   imports: [
     IonIcon,
     IonCardTitle,
-    IonButton,
     IonCardContent,
     IonCardSubtitle,
     IonCardHeader,
@@ -36,14 +30,10 @@ import { RouterLink } from '@angular/router';
     IonRow,
     IonGrid,
     IonCard,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     RouterLink
-  ],
+],
 })
 export class ProducteCardPage {
   producte = input.required<Producte>();

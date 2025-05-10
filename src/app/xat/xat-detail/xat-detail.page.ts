@@ -1,9 +1,8 @@
-import { Component, effect, inject, input, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, effect, inject, input, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton, IonLabel, IonList, IonFooter, IonRow, IonGrid, IonButtons, IonBackButton, IonImg } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton, IonFooter, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import { XatService } from 'src/app/services/xat.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { Preferences } from '@capacitor/preferences';
 import { AuthService } from 'src/app/services/auth.service';
 import { Client } from 'src/app/interfaces/usuari';
@@ -13,7 +12,7 @@ import { Client } from 'src/app/interfaces/usuari';
   templateUrl: './xat-detail.page.html',
   styleUrls: ['./xat-detail.page.scss'],
   standalone: true,
-  imports: [IonImg, IonBackButton, IonButtons, IonGrid, IonRow, IonFooter, IonList, IonLabel, IonButton, IonInput, IonItem, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonBackButton, IonButtons, IonFooter, IonButton, IonInput, IonItem, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class XatDetailPage {
 

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-button (click)="close()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="quantitat-page ion-padding">
+
+  <ion-card class="quantitat-card">
+      <ion-card-content>
+
+        <form
+          #formEvent="ngForm"
+          [formGroup]="newContrasenya"
+          (ngSubmit)="canviarContrasenya()"
+          id="newEdit"
+        >
+        <ion-item class="input-quantitat">
+          <ion-input type="password"
+          class="form-control"
+          name="contrasenya"
+          id="contrasenya"
+          label="Contrasenya"
+          labelPlacement="floating"
+          formControlName="contrasenya"></ion-input>
+        </ion-item>
+        
+        <ion-item class="input-quantitat">
+          <ion-input
+            type="password"
+            name="contrasenya2"
+            id="contrasenya2"
+            label="Repeteix contrasenya"
+            labelPlacement="floating"
+            formControlName="contrasenya2"
+          ></ion-input>
+        </ion-item>
+    
+        <ion-button expand="full" type="submit" [disabled]="newContrasenya.invalid">Canviar Contrasenya</ion-button>
+      </form>
+
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>

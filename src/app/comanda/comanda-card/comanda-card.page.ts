@@ -1,7 +1,7 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonRow, IonGrid, IonCard, IonButton, IonCol, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/angular/standalone';
+import { IonRow, IonGrid, IonCard, IonCol, IonCardHeader, IonCardTitle, IonIcon } from '@ionic/angular/standalone';
 import { Comanda } from 'src/app/interfaces/comanda';
 import { RouterLink } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './comanda-card.page.html',
   styleUrls: ['./comanda-card.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonCardTitle, IonCardHeader, IonCol, IonButton, IonCard, IonGrid, IonRow, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink]
+  imports: [IonIcon, IonCardTitle, IonCardHeader, IonCol, IonCard, IonGrid, IonRow, CommonModule, FormsModule, RouterLink]
 })
 export class ComandaCardPage {
 

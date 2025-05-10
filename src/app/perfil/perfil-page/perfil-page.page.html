@@ -12,7 +12,7 @@
 
 <ion-content>
   <ion-card class="perfil-card">
-    <img [src]="usuari().imatge" alt="Foto de perfil" class="perfil-foto">
+    <img src="{{imatge()}}" alt="Foto de perfil" class="perfil-foto">
 
     <ion-card-header>
       <ion-card-title class="titol-principal">{{ usuari().nom }} {{ usuari().cognom }}</ion-card-title>
