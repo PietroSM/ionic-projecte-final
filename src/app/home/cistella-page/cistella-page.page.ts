@@ -33,8 +33,16 @@ export class CistellaPagePage {
     })
   }
 
-  eliminarProducte(){
-
+  eliminarProducte(id: string){
+    this.#cistellaService.deleteProducteCistella(id)
+      .subscribe({
+        next: () => {
+          console.log("piola");
+        },
+        error: () => {
+          console.log("piolant");
+        }
+      })
   }
 
 

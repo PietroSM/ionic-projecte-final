@@ -64,9 +64,5 @@ export class XatService {
       .pipe(map((resp) => resp.client));
   }
 
-  // escoltarErrors(): Observable<any> {
-  //   return this.#socket.fromEvent('errorMissatge');
-  // }
-
 
 }

@@ -27,6 +27,11 @@ export class CistellaService {
   }
 
 
+  deleteProducteCistella(id: string): Observable<void> {
+    return this.#http
+      .delete<void>(`${this.#cistellaURL}/${id}`);
+  }
+
 
 
 
