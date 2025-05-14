@@ -74,6 +74,7 @@ export class LoginPage {
           this.#nav.navigateRoot(['/home/inici']);
         },
         error: async (error) => {
+          console.log(error);
           (await this.#toastCtrl.create({
             duration: 3000,
             header: 'Error',
