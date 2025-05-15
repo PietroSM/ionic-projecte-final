@@ -126,7 +126,9 @@ export class DetallsProductePage{
     if(result.data){
       this.#cistellaService.afegirProducteCistella(result.data.dadesAfegir)
       .subscribe({
-        next: () => {},
+        next: () => {
+          this.#nav.navigateRoot(['/home/cistella']);
+        },
         error: (error) => {console.log(error);}
       })
     }
@@ -136,9 +138,8 @@ export class DetallsProductePage{
   obrirXat(){
     this.#xatService.crearXat(this.producte()!.client.id)
     .subscribe({
-      next: (conversa: any) => {
-        console.log('Conversa trobada/creada:', conversa);
-        // podries redirigir a la vista de xat amb l'id
+      next: (conversa) => {
+          this.#nav.navigateRoot(['/xat/'+ conversa]);
       },
       error: (error) => {
         console.error('Error creant la conversa:', error);

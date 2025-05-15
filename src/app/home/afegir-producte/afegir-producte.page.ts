@@ -76,14 +76,14 @@ export class AfegirProductePage {
       enableHighAccuracy: true,
     });
     
-    this.newProducte.get('lat')?.setValue(coordinates.coords.longitude);
-    this.newProducte.get('lng')?.setValue(coordinates.coords.latitude);
+    this.newProducte.get('lat')?.setValue(coordinates.coords.latitude);
+    this.newProducte.get('lng')?.setValue(coordinates.coords.longitude);
   }
 
 
     changePlace(result: SearchResult) {
-      this.newProducte.get('lat')?.setValue(result.coordinates[0]);
-      this.newProducte.get('lng')?.setValue(result.coordinates[1]);
+      this.newProducte.get('lat')?.setValue(result.coordinates[1]);
+      this.newProducte.get('lng')?.setValue(result.coordinates[0]);
       this.address.set(result.address);
     }
   
@@ -92,8 +92,6 @@ export class AfegirProductePage {
   async pickFromGallery() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Photos,
-      height: 100,
-      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -106,9 +104,6 @@ export class AfegirProductePage {
   async takePhoto() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Camera,
-      quality: 90,
-      height: 100,
-      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });

@@ -1,70 +1,73 @@
-ion-toolbar{
-    color: white;
-    --background: #6e5d99;
-    
-    .imatge-top {
-        height: 40px;
-    }
+ion-toolbar {
+  color: white;
+  --background: #6e5d99;
+
+  .imatge-top {
+    height: 40px;
+  }
 }
 
-
 ion-content {
-    --background: #81bd72;
+  --background: #81bd72;
 }
 
 .titol-principal {
-    font-size: 1.5rem;
-    color: #6e5d99;
-    font-weight: bold;
+  font-size: 1.5rem;
+  color: #6e5d99;
+  font-weight: bold;
 }
 
 .producte-card, .venedor-card {
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
 }
 
 .producte-card, .venedor-card {
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;
-  }
-  
-  .imatge-producte, .imatge-venedor {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-  }
-
-
-  .titol-vendedor {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #3b3b3b;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
 }
-  
+
+.columna-imatge-centrada {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imatge-producte, .imatge-venedor {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.titol-vendedor {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3b3b3b;
+}
+
 .correu-vendedor {
-    font-size: 0.95rem;
-    color: #777;
+  font-size: 0.95rem;
+  color: #777;
 }
-  
-  .icon-container {
-    display: flex;
-    gap: 16px;
-    margin-top: 12px;
-  }
-  
-  .icon-gran {
-    font-size: 48px;
-    color: #6e5d99;
-  }
 
-  .boto-row {
-    margin-top: 20px;
-  }
+.icon-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
 
+.icon-gran {
+  font-size: 48px;
+  color: #6e5d99;
+}
+
+.boto-row {
+  margin-top: 20px;
+}
 
 ion-button {
-    --border-radius: 5px;
-    --background: #6e5d99;
+  --border-radius: 5px;
+  --background: #6e5d99;
 }

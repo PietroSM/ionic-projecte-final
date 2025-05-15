@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { Component, inject } from '@angular/core';
+import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
   camera,
@@ -30,6 +30,8 @@ import {
   bagCheckOutline,
   storefrontOutline,
 } from 'ionicons/icons';
+import { SplashScreen } from '@capacitor/splash-screen';
+
 
 @Component({
   selector: 'app-root',
@@ -37,6 +39,9 @@ import {
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
+  #platform = inject(Platform);
+
+
   constructor() {
     addIcons({
       camera,
@@ -67,5 +72,15 @@ export class AppComponent {
       bagCheckOutline,
       storefrontOutline
     });
+  }
+
+
+
+    async initializeApp() {
+    if (this.#platform.is('capacitor')) {
+      await this.#platform.ready();
+      SplashScreen.hide();
+    }
+
   }
 }
