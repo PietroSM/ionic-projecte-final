@@ -50,14 +50,14 @@ export class RegisterPage  {
       enableHighAccuracy: true,
     });
     
-    this.newUsuari.get('lat')?.setValue(coordinates.coords.longitude);
-    this.newUsuari.get('lng')?.setValue(coordinates.coords.latitude);
+    this.newUsuari.get('lat')?.setValue(coordinates.coords.latitude);
+    this.newUsuari.get('lng')?.setValue(coordinates.coords.longitude);
   }
 
 
   changePlace(result: SearchResult) {
-    this.newUsuari.get('lat')?.setValue(result.coordinates[0]);
-    this.newUsuari.get('lng')?.setValue(result.coordinates[1]);
+    this.newUsuari.get('lat')?.setValue(result.coordinates[1]);
+    this.newUsuari.get('lng')?.setValue(result.coordinates[0]);
     this.address.set(result.address);
   }
 
@@ -65,8 +65,6 @@ export class RegisterPage  {
   async pickFromGallery() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Photos,
-      height: 100,
-      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -79,9 +77,6 @@ export class RegisterPage  {
   async takePhoto() {
     const photo = await Camera.getPhoto({
       source: CameraSource.Camera,
-      quality: 90,
-      height: 100,
-      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
