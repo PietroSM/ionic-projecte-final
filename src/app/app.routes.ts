@@ -88,19 +88,23 @@ export const routes: Routes = [
   },
   {
     path: 'comanda-status-page',
-    loadComponent: () => import('./comanda/comanda-status-page/comanda-status-page.page').then( m => m.ComandaStatusPagePage)
+    loadComponent: () => import('./comanda/comanda-status-page/comanda-status-page.page').then( m => m.ComandaStatusPagePage),
+    canActivate: [loginActiveGuard]
   },
   {
     path: 'productes-propis',
-    loadComponent: () => import('./producte/productes-propis/productes-propis.page').then( m => m.ProductesPropisPage)
+    loadComponent: () => import('./producte/productes-propis/productes-propis.page').then( m => m.ProductesPropisPage),
+    canActivate: [loginActiveGuard]
   },
   {
     path: 'xat/:id',
-    loadComponent: () => import('./xat/xat-detail/xat-detail.page').then( m => m.XatDetailPage)
+    loadComponent: () => import('./xat/xat-detail/xat-detail.page').then( m => m.XatDetailPage),
+    canActivate: [loginActiveGuard]
   },
   {
     path: 'perfil-page',
-    loadComponent: () => import('./perfil/perfil-page/perfil-page.page').then( m => m.PerfilPagePage)
+    loadComponent: () => import('./perfil/perfil-page/perfil-page.page').then( m => m.PerfilPagePage),
+    canActivate: [loginActiveGuard]
   },
   {
     path: 'perfil',
