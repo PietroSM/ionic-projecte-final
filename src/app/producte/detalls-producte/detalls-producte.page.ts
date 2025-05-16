@@ -138,8 +138,9 @@ export class DetallsProductePage{
   obrirXat(){
     this.#xatService.crearXat(this.producte()!.client.id)
     .subscribe({
-      next: (conversa) => {
-          this.#nav.navigateRoot(['/xat/'+ conversa]);
+      next: (conversa: any) => {
+        console.log(conversa);
+          this.#nav.navigateRoot(['/xat/'+ conversa._id]);
       },
       error: (error) => {
         console.error('Error creant la conversa:', error);
