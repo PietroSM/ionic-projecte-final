@@ -42,7 +42,7 @@ import { authInterceptor } from './app/shared/interceptors/auth.interceptor';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 const socketConfig: SocketIoConfig = {
-  url: 'http://localhost:8080',
+  url: 'http://vps-281e1278.vps.ovh.net:8081',
   options: {
     transports: ['websocket']
   }
