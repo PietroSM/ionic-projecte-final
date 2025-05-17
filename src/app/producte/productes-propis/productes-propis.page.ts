@@ -19,7 +19,7 @@ export class ProductesPropisPage {
 
 
   ionViewWillEnter(){
-    this.#productesService.getProductes(1,'')
+    this.#productesService.getProductes(1,'','')
     .subscribe((productes) => {
       const productesFiltrats = productes.productes.filter(
         element => element.propietat === true 

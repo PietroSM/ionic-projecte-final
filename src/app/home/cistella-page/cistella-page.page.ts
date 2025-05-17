@@ -1,8 +1,7 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader,NavController,ToastController, IonTitle, IonToolbar, IonItem, IonList, IonLabel, IonButton, IonIcon, IonRow, IonGrid, IonCol, IonButtons, IonImg, IonCard } from '@ionic/angular/standalone';
-import { rxResource } from '@angular/core/rxjs-interop';
 import { CistellaService } from 'src/app/services/cistella.service';
 import { InsertarComanda } from 'src/app/interfaces/comanda';
 import { ComandaService } from 'src/app/services/comanda.service';

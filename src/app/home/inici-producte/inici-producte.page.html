@@ -4,8 +4,14 @@
       debounce="500"
       [(ngModel)]="search"
       (ionInput)="filterItems()"
-    >
+      placeholder="Cercar..." >
     </ion-searchbar>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="obrirMenu()">
+      <ion-icon slot="icon-only" [name]="icon()"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

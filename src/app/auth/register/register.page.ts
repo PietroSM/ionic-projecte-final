@@ -30,9 +30,9 @@ export class RegisterPage  {
 
 
   newUsuari = this.#fb.group({
-    alies: ['', [Validators.required, Validators.minLength(4)]],
+    alies: ['', [Validators.required, Validators.minLength(3)]],
     contrasenya: ['', [Validators.required, Validators.minLength(8)]],
-    nom: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+    nom: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     cognom: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     correu: ['', [Validators.required, Validators.email]],
     imatge: ['', [Validators.required]],

@@ -29,6 +29,8 @@ import {
   airplaneOutline,
   bagCheckOutline,
   storefrontOutline,
+  menuOutline,
+  earthOutline,
 } from 'ionicons/icons';
 import { SplashScreen } from '@capacitor/splash-screen';
 
@@ -70,7 +72,9 @@ export class AppComponent {
       batteryDeadOutline,
       airplaneOutline,
       bagCheckOutline,
-      storefrontOutline
+      storefrontOutline, 
+      menuOutline,
+      earthOutline
     });
   }
 

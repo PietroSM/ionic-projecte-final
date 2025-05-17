@@ -31,7 +31,7 @@ export class LoginPage {
   coords = signal<[number, number]>([0, 0]);
 
   newLogin = this.#fb.group({
-    alies: ['', [Validators.minLength(4), Validators.required]],
+    alies: ['', [Validators.minLength(3), Validators.required]],
     contrasenya: ['', [Validators.required]],
   });
 

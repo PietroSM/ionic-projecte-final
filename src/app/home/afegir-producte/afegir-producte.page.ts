@@ -34,7 +34,7 @@ export class AfegirProductePage {
   producte = input.required<Producte>();
 
   newProducte = this.#fb.group({
-    nom: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+    nom: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     stock: [0, [Validators.required, Validators.min(0)]],
     preu: [0, [Validators.required, Validators.min(0.01)]],
     enviament: [false],

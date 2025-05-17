@@ -21,10 +21,11 @@ export class ProducteService {
   }
 
 
-  getProductes(pagina: number, search: string): Observable<ProductesResponse>{
+  getProductes(pagina: number, search: string, temporada: string): Observable<ProductesResponse>{
     const params = new URLSearchParams({
       pagina: String(pagina),
-      search
+      search,
+      temporada
     });
     return this.#http
       .get<ProductesResponse>(`${this.#productesURL}?${params.toString()}`)

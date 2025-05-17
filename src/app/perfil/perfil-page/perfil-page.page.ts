@@ -67,9 +67,6 @@ export class PerfilPagePage {
   async takePhoto(){
     const photo = await Camera.getPhoto({
       source: CameraSource.Camera,
-      quality: 90,
-      height: 100,
-      width: 100,
       allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
@@ -86,9 +83,6 @@ export class PerfilPagePage {
   async pickFromGallery(){
     const photo = await Camera.getPhoto({
       source: CameraSource.Photos,
-      height: 100,
-      width: 100,
-      allowEditing: true,
       resultType: CameraResultType.DataUrl // Base64 (url encoded)
     });
 
