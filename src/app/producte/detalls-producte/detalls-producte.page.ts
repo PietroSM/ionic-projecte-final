@@ -86,8 +86,8 @@ export class DetallsProductePage{
                 next: async () => {
                   (await this.#toastCtrl.create({
                     duration: 3000,
-                    header: 'Error',
-                    position: 'middle',
+                    header: 'Confirmat',
+                    position: 'bottom',
                     message: 'Producte esborrat corractament',
                   })).present();
                   this.#nav.navigateRoot(['/home/inici']);

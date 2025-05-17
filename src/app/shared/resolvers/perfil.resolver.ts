@@ -7,8 +7,10 @@ import { PerfilService } from 'src/app/services/perfil.service';
 export const perfilResolver: ResolveFn<Usuari> = (route) => {
   const perfilService = inject(PerfilService);
 
+  console.log(route.url[0].path);
+
   if(route.url[0].path != "me") {
-    return perfilService.getPerfil(route.url[1].path)
+    return perfilService.getPerfil(route.url[0].path)
       .pipe(
         catchError((error) => {
           console.log(error.error.error);

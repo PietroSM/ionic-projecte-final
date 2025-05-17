@@ -28,7 +28,7 @@ export class XatPagePage {
   idEmisor = signal<string>('');
 
 
-  constructor() { 
+  ionViewWillEnter(){
     this.#xatsService.getConverses()
       .subscribe((xats) => {
         this.xats.set(xats);
@@ -49,11 +49,6 @@ export class XatPagePage {
       .subscribe(
         id => { this.idEmisor.set(id)}
       );  
-
-
-    // effect(() => {
-    //   console.log(this.xats());
-    // });
 
   }
 

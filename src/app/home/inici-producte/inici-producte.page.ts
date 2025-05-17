@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonRefresher, IonRefresherContent, IonInfiniteScrollContent, IonInfiniteScroll } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonSearchbar, IonRefresher, IonRefresherContent, IonInfiniteScrollContent, IonInfiniteScroll, IonCardContent, IonCard, IonRow, IonGrid, IonCol, IonSkeletonText, IonCardHeader } from '@ionic/angular/standalone';
 import { Producte } from 'src/app/interfaces/producte';
 import { ProducteService } from 'src/app/services/producte.service';
 import { ProducteCardPage } from "../../producte/producte-card/producte-card.page";
@@ -11,38 +11,33 @@ import { ProducteCardPage } from "../../producte/producte-card/producte-card.pag
   templateUrl: './inici-producte.page.html',
   styleUrls: ['./inici-producte.page.scss'],
   standalone: true,
-  imports: [IonInfiniteScroll, IonInfiniteScrollContent, IonRefresherContent, IonRefresher, IonSearchbar, IonContent, IonHeader, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
+  imports: [IonCardHeader, IonSkeletonText, IonCol, IonGrid, IonRow, IonCard, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent, IonRefresherContent, IonRefresher, IonSearchbar, IonContent, IonHeader, IonToolbar, CommonModule, FormsModule, ProducteCardPage]
 })
 export class IniciProductePage {
 
   productes = signal<Producte[]>([]);
   #productesService = inject(ProducteService);
+  data = signal(false);
 
   finished = false;
   contador = 2;
   search = '';
 
   ionViewWillEnter(){
+    
+    
     this.#productesService.getProductes(1,this.search)
     .subscribe((productes) => {
       this.productes.set(productes.productes);
+      this.data.set(true);
+
       if (!productes.niHaMes) {
         this.finished = true;
       }
     });
   }
-
-
-  // constructor(){
-  //   this.#productesService.getProductes(1,this.search)
-  //   .subscribe((productes) => {
-  //     this.productes.set(productes.productes);
-  //     if (!productes.niHaMes) {
-  //       this.finished = true;
-  //     }
-  //   });
-  // }
-
+  
+  
   reloadProductes(refresher?: IonRefresher){
     this.#productesService.getProductes(1,this.search)
     .subscribe({
@@ -52,8 +47,8 @@ export class IniciProductePage {
       }
     });
   }
-
-
+  
+  
   filterItems(){
     this.#productesService.getProductes(1,this.search)
     .subscribe((productes) => {

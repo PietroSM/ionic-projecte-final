@@ -1,11 +1,12 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonList, IonLabel, IonButton, IonIcon, IonRow, IonGrid, IonCol, IonButtons, IonImg, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader,NavController,ToastController, IonTitle, IonToolbar, IonItem, IonList, IonLabel, IonButton, IonIcon, IonRow, IonGrid, IonCol, IonButtons, IonImg, IonCard } from '@ionic/angular/standalone';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { CistellaService } from 'src/app/services/cistella.service';
 import { InsertarComanda } from 'src/app/interfaces/comanda';
 import { ComandaService } from 'src/app/services/comanda.service';
+import { Cistella } from 'src/app/interfaces/cistella';
 
 @Component({
   selector: 'app-cistella-page',
@@ -17,20 +18,21 @@ import { ComandaService } from 'src/app/services/comanda.service';
 export class CistellaPagePage {
   #cistellaService = inject(CistellaService);
   #comandaService = inject(ComandaService);
+  #nav = inject(NavController);
+  #toastCtrl = inject(ToastController);
+  
 
-  cistellaResource = rxResource({
-    loader: () => this.#cistellaService.getCistella()
-  });
+  cistella = signal<Cistella | null>(null);
 
-  cistella = computed(() => this.cistellaResource.value());
-
-  constructor() {
-    effect(() => {
-
-        console.log(this.cistella());
-
-      
+  ionViewWillEnter() {
+    this.#cistellaService.getCistella()
+    .subscribe({
+      next: (resultat) => {
+        this.cistella.set(resultat);
+      }
     })
+
+
   }
 
   eliminarProducte(id: string){
@@ -59,7 +61,15 @@ export class CistellaPagePage {
 
     this.#comandaService.crearComanda(postComanda)
       .subscribe({
-        next: (resultat) => {console.log(resultat);},
+        next: async (resultat) => {
+          (await this.#toastCtrl.create({
+            duration: 3000,
+            header: 'Confirmat',
+            position: 'bottom',
+            message: 'Comanda realitzada corractament',
+          })).present();
+          this.#nav.navigateRoot(['/comandes/'+resultat]);
+        },
         error: (error) => {console.log(error);}
       });
     

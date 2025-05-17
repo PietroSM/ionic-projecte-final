@@ -27,7 +27,7 @@ export class PerfilPagePage {
 
 
   constructor() { 
-
+    console.log("hola");
     effect(() => {
       this.imatge.set(this.usuari().imatge);
         console.log(this.usuari()!);

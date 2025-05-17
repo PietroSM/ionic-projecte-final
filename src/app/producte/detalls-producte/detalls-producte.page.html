@@ -51,7 +51,7 @@
 
   
   
-  <ion-card class="venedor-card">
+  <ion-card class="venedor-card" [routerLink]="['/perfil/'+producte()?.client?.id]">
     <ion-row class="ion-alig-items-center">
       <ion-col size="3" size-md="3">
         <img [src]="producte()?.client?.imatge" alt="Imagen de ejemplo" class="imatge-venedor">

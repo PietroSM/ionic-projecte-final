@@ -17,25 +17,53 @@
   </ion-refresher>
 
 
+  @if (data()) {
+    @for (producte of productes(); track producte.id){
+      <app-producte-card
+      [producte]="producte">
+  
+      </app-producte-card>
+    }
+  
+    <ion-infinite-scroll
+    #infinite
+    (ionInfinite)="loadMoreItems(infinite)"
+    [disabled]="finished"
+    >
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Carregant mes productes..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
-  @for (producte of productes(); track producte.id){
-    <app-producte-card
-    [producte]="producte">
-
-    </app-producte-card>
+  } @else {
+     @for (i of [1, 2, 3, 4, 5]; track i) {
+      <ion-card class="producte-card producte-card-skeleton">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="5" size-md="3">
+              <div class="skeleton-image-container">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </div>
+            </ion-col>
+            <ion-col size="7" size-md="9">
+              <ion-card-header>
+                <ion-skeleton-text animated style="width: 70%; height: 1.2em; margin-bottom: 8px;"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 90%; height: 0.9em; margin-bottom: 6px;"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 80%; height: 0.9em; margin-bottom: 6px;"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 100%; height: 0.9em;"></ion-skeleton-text>
+              </ion-card-header>
+              <ion-card-content class="icon-container" style="padding-top: 8px; padding-bottom: 8px;">
+                 </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    }
   }
 
-  <ion-infinite-scroll
-  #infinite
-  (ionInfinite)="loadMoreItems(infinite)"
-  [disabled]="finished"
-  >
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Carregant mes productes..."
-    >
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+
 
 
 
