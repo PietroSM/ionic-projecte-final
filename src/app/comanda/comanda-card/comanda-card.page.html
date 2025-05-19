@@ -8,7 +8,7 @@
 
       <ion-col class="text-centre" size="9">
         <ion-card-header>
-          <ion-card-title class="tamany-titol">Preu: {{comanda().preuTotal}} €</ion-card-title>
+          <ion-card-title class="tamany-titol">Preu: {{comanda().preuTotal | number:'1.2-2'}} €</ion-card-title>
           <ion-card-title class="tamany-titol">Status: {{comanda().estatComanda}}</ion-card-title>
         </ion-card-header>
       </ion-col>

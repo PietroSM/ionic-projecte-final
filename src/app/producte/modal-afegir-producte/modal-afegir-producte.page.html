@@ -24,7 +24,7 @@
         </ion-item>
 
         <div class="preu-container">
-            <h2 class="preu-text">Preu: {{ preu() }} €</h2>
+            <h2 class="preu-text">Preu: {{ preu() | number:'1.2-2'}} €</h2>
         </div>
 
         <ion-button expand="block" (click)="afegirCistella()">

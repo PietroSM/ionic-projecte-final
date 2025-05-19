@@ -28,7 +28,7 @@
             <ion-card-header>
               <ion-card-title class="titol-principal">{{producte()!.nom}}</ion-card-title>
               <ion-card-subtitle>Stock: {{producte()!.stock}} Kg</ion-card-subtitle>
-              <ion-card-subtitle>Preu: {{producte()!.preu}} €/Kg</ion-card-subtitle>
+              <ion-card-subtitle>Preu: {{producte()!.preu | number:'1.2-2'}} €/Kg</ion-card-subtitle>
               <ion-card-subtitle>Ubicació: {{producte()?.adresa}} </ion-card-subtitle>
               <ion-card-subtitle>Temporada: {{producte()?.temporada}}</ion-card-subtitle>
               <ion-card-subtitle>Tipus: {{producte()?.tipus}}</ion-card-subtitle>

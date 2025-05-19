@@ -8,6 +8,7 @@ import { InsertarProducte, Producte } from 'src/app/interfaces/producte';
 import { ProducteService } from 'src/app/services/producte.service';
 import { SearchResult } from 'src/app/interfaces/search-result';
 import { GaAutocompleteDirective } from "../../shared/directives/ol-maps/ga-autocomplete.directive";
+import { validarDosDecimals } from 'src/app/shared/validator/validarDosDecimals';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class AfegirProductePage {
   newProducte = this.#fb.group({
     nom: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     stock: [0, [Validators.required, Validators.min(0)]],
-    preu: [0, [Validators.required, Validators.min(0.01)]],
+    preu: [0, [Validators.required, Validators.min(0.01), validarDosDecimals()]],
     enviament: [false],
     recogida: [false],
     temporada: ['', [Validators.required]],
