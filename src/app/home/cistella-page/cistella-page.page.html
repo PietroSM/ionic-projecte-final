@@ -26,7 +26,7 @@
               <ion-row>
                 <ion-col class="col-centrat">{{ item.producte.nom }}</ion-col>
                 <ion-col class="col-centrat">{{ item.quantitat }}</ion-col>
-                <ion-col class="col-centrat">{{ item.preu | currency:'EUR' | number:'1.2-2'}}</ion-col>
+                <ion-col class="col-centrat">{{ item.preu | currency:'EUR'}}</ion-col>
                 <ion-col class="col-centrat"><ion-button
                   fill="clear"
                   color="danger"
@@ -43,7 +43,7 @@
       <ion-grid>
         <ion-row class="row-centered">
           <ion-col></ion-col>
-          <ion-col class="text-contorn"><strong>Total: {{ cistella()?.preuTotal| currency:'EUR' | number:'1.2-2'}}</strong></ion-col>
+          <ion-col class="text-contorn"><strong>Total: {{ cistella()?.preuTotal| currency:'EUR'}}</strong></ion-col>
           <ion-col></ion-col>
         </ion-row>
       </ion-grid>
