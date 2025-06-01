@@ -129,7 +129,14 @@ export class DetallsProductePage{
         next: () => {
           this.#nav.navigateRoot(['/home/cistella']);
         },
-        error: (error) => {console.log(error);}
+        error: async (error) => {
+          (await this.#toastCtrl.create({
+              duration: 3000,
+              header: 'Error',
+              position: 'middle',
+              message: error.error.error,
+            })).present();
+        }
       })
     }
   }
