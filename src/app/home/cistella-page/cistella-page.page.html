@@ -13,7 +13,7 @@
       <ion-list>
         <ion-grid>
           <ion-row>
-            <ion-col class="col-centrat"><strong>Nom</strong></ion-col>
+            <ion-col class="col-centrat "><strong>Nom</strong></ion-col>
             <ion-col class="col-centrat"><strong>Quantitat</strong></ion-col>
             <ion-col class="col-centrat"><strong>Preu</strong></ion-col>
             <ion-col class="col-centrat"></ion-col>
@@ -23,8 +23,8 @@
         @for (item of cistella()!.productes; track $index) {
           <ion-item>
             <ion-grid>
-              <ion-row>
-                <ion-col class="col-centrat">{{ item.producte.nom }}</ion-col>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="col-centrat col-nom">{{ item.producte.nom }}</ion-col>
                 <ion-col class="col-centrat">{{ item.quantitat }}</ion-col>
                 <ion-col class="col-centrat">{{ item.preu | currency:'EUR'}}</ion-col>
                 <ion-col class="col-centrat"><ion-button
