@@ -35,10 +35,20 @@ ion-content {
   justify-content: center;
 }
 
-.imatge-producte, .imatge-venedor {
+.imatge-producte {
   width: 100%;
+  height: 250px;
   border-radius: 12px;
   object-fit: cover;
+}
+
+.imatge-venedor {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
 }
 
 .titol-vendedor {

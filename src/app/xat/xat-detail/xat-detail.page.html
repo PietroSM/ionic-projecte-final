@@ -2,11 +2,14 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home/xat"></ion-back-button>
-    </ion-buttons>    
-    <ion-title slot="end">{{this.receptor()?.nom}}</ion-title>
-    <ion-buttons slot="end">
-      <img [src]="this.receptor()?.imatge" class="imatge-top" style="border-radius: 20px;"/>
-      </ion-buttons>
+    </ion-buttons>
+
+    <ion-title>{{this.receptor()?.nom}}</ion-title>
+
+    <ion-avatar slot="end" class="avatar-top">
+      <img [src]="this.receptor()?.imatge" alt="Avatar del venedor" />
+    </ion-avatar>
+
   </ion-toolbar>
 </ion-header>
 

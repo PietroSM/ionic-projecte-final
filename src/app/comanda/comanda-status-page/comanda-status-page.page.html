@@ -35,7 +35,7 @@
               <ion-row>
                 <ion-col class="col-centrat">{{ linia.producte.nom }}</ion-col>
                 <ion-col class="col-centrat">{{ linia.quantitat }}</ion-col>
-                <ion-col class="col-centrat">{{ linia.preu | currency:'EUR'}}</ion-col>
+                <ion-col class="col-centrat">{{ linia.preu | currency:'EUR' }}</ion-col>
               </ion-row>
             </ion-grid>
           </ion-item>
@@ -62,7 +62,7 @@
       } @else {
         <ion-card-title class="estat">Estat Comanda: {{comanda()?.estatComanda}}</ion-card-title>
       }
-      <ion-card-title class="preu-total">Preu: {{comanda()?.preuTotal}} €</ion-card-title>
+      <ion-card-title class="preu-total">Preu: {{comanda()?.preuTotal | number:'1.2-2'}} €</ion-card-title>
     </ion-card-header>
   </ion-card>
 
