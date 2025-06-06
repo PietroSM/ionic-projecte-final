@@ -11,3 +11,4 @@ export const baseUrlInterceptor: HttpInterceptorFn = (req, next) => {
   return next(reqClone);
 };
 // http://localhost:8080
+// http://vps-281e1278.vps.ovh.net:8081
