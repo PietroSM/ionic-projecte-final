@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButtons, IonTitle, IonToolbar, IonHeader, IonImg, IonBackButton, IonItem, IonLabel, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonButtons, IonTitle, IonToolbar, IonHeader, IonImg, IonBackButton, IonItem, IonLabel, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
 import { Producte } from 'src/app/interfaces/producte';
 import { ProducteService } from 'src/app/services/producte.service';
 import { ProducteCardPage } from '../producte-card/producte-card.page';
@@ -16,15 +16,28 @@ import { ProducteCardPage } from '../producte-card/producte-card.page';
 export class ProductesPropisPage {
   productes = signal<Producte[]>([]);
   #productesService = inject(ProducteService);
-
+  contador = 1;
 
   ionViewWillEnter(){
-    this.#productesService.getProductes(1,'','', 1)
-    .subscribe((productes) => {
-      const productesFiltrats = productes.productes.filter(
-        element => element.propietat === true 
-      );
-      this.productes.set(productesFiltrats);
+    this.loadMoreItems();
+  }
+
+
+  
+
+  loadMoreItems() {
+    this.#productesService.getProductes(this.contador, '', '')
+    .subscribe({
+      next: (productes) => {
+        const productesFiltrats = productes.productes.filter(
+          element => element.propietat === true 
+        );
+        this.productes.set(this.productes().concat(productesFiltrats));
+        this.contador++;
+        if (productes.niHaMes) {
+          this.loadMoreItems();
+        }
+      },
     });
   }
 
