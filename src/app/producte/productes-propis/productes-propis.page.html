@@ -10,10 +10,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  @for (producte of productes(); track producte.id){
-    <app-producte-card
-    [producte]="producte">
+  @if (productes().length > 0) {
+    @for (producte of productes(); track producte.id){
+      <app-producte-card
+      [producte]="producte">
 
-    </app-producte-card>
+      </app-producte-card>
+    }
+  } @else {
+   <div class="contenidor-buit">
+      <ion-icon name="leaf-outline" class="icona-buida"></ion-icon>
+      <p class="missatge-buit">Encara no tens productes</p>
+      <span class="subtitol-buit">Pots començar a afegir-ne des de la secció corresponent.</span>
+    </div>
   }
 </ion-content>

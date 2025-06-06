@@ -12,10 +12,17 @@
 
 
 <ion-content [fullscreen]="true">
-  @for (comanda of comandes(); track comanda.Vendedor){
-    <app-comanda-card
-    [comanda]="comanda">
-    </app-comanda-card>
+  @if (comandes().length > 0) {
+    @for (comanda of comandes(); track comanda.Vendedor){
+      <app-comanda-card
+      [comanda]="comanda">
+      </app-comanda-card>
+    }
+  } @else {
+    <div class="contenidor-buit">
+      <ion-icon name="basket-outline" class="icona-buida"></ion-icon>
+      <p class="missatge-buit">{{missatge}}</p>
+    </div>
   }
 
 

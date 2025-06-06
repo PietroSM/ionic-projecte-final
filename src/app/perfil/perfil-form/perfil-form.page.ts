@@ -34,7 +34,7 @@ export class PerfilFormPage{
   
   
   editUsuari = this.#fb.group({
-    nom: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+    nom: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     cognom: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     correu: ['', [Validators.required, Validators.email]],
     lat: [0],

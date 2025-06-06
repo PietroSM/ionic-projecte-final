@@ -27,7 +27,8 @@ export class IniciProductePage {
   temporada = '';
 
   ionViewWillEnter(){
-    
+    this.finished = false;
+    this.contador = 2;
     
     this.#productesService.getProductes(1,this.search, this.temporada)
     .subscribe((productes) => {

@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButtons, IonTitle, IonToolbar, IonHeader, IonImg, IonBackButton } from '@ionic/angular/standalone';
+import { IonContent, IonButtons, IonTitle, IonToolbar, IonHeader, IonImg, IonBackButton, IonItem, IonLabel, IonIcon } from '@ionic/angular/standalone';
 import { Producte } from 'src/app/interfaces/producte';
 import { ProducteService } from 'src/app/services/producte.service';
 import { ProducteCardPage } from '../producte-card/producte-card.page';
@@ -11,7 +11,7 @@ import { ProducteCardPage } from '../producte-card/producte-card.page';
   templateUrl: './productes-propis.page.html',
   styleUrls: ['./productes-propis.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonImg, IonHeader, IonToolbar, IonTitle, IonButtons, IonContent, CommonModule, FormsModule, ProducteCardPage]
+  imports: [IonIcon, IonBackButton, IonImg, IonHeader, IonToolbar, IonTitle, IonButtons, IonContent, CommonModule, FormsModule, ProducteCardPage]
 })
 export class ProductesPropisPage {
   productes = signal<Producte[]>([]);

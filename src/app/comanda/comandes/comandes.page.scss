@@ -10,3 +10,27 @@ ion-content {
 .imatge-top {
     height: 40px;
 }
+
+.contenidor-buit {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.icona-buida {
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 16px;
+}
+
+.missatge-buit {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
