@@ -21,13 +21,6 @@ export class ComandaStatusPagePage {
 
   id = input.required<string>();
 
-  constructor() {
-
-    effect(() => {
-      console.log(this.comanda());
-    });
-  }
-
   comandasResource = rxResource({
     request: () => this.id(),
     loader: ({request: id}) => this.#comandaService.getComanda(id)
@@ -36,8 +29,6 @@ export class ComandaStatusPagePage {
   comanda = computed(() => this.comandasResource.value());
 
   canviarEstat(event: any){
-
-    // console.log(event.detail.value);
 
     const dades : UpdateComanda = {
       id: this.comanda()!.id,

@@ -37,7 +37,6 @@ export class DetallsProductePage{
 
   constructor(){
     effect(() =>{
-      console.log(this.producte());
       if(this.producte()){
         this.iconEstacio.set(this.getIconEstacio(this.producte()!.temporada));
       }
@@ -146,7 +145,6 @@ export class DetallsProductePage{
     this.#xatService.crearXat(this.producte()!.client.id)
     .subscribe({
       next: (conversa: any) => {
-        console.log(conversa);
           this.#nav.navigateRoot(['/xat/'+ conversa._id]);
       },
       error: (error) => {

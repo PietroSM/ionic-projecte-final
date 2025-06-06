@@ -82,7 +82,6 @@ export class XatDetailPage {
   }
   
   async enviarMissatge(text: any){
-    console.log(text);
     let token = await Preferences.get({ key: 'fs-token' });
 
     this.#xatsService.enviarMissatge(this.id(),text, token.value!);

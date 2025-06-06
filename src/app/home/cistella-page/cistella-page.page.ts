@@ -46,7 +46,6 @@ export class CistellaPagePage {
           })
         },
         error: () => {
-          console.log("piolant");
         }
       })
   }
@@ -60,9 +59,6 @@ export class CistellaPagePage {
       idVendedor: this.cistella()!.productes[0].producte.client.id,
       preuTotal: this.cistella()!.preuTotal
     };
-
-    console.log(postComanda);
-
     this.#comandaService.crearComanda(postComanda)
       .subscribe({
         next: async (resultat) => {
@@ -74,7 +70,7 @@ export class CistellaPagePage {
           })).present();
           this.#nav.navigateRoot(['/comandes/'+resultat]);
         },
-        error: (error) => {console.log(error);}
+        error: (error) => {}
       });
     
   }

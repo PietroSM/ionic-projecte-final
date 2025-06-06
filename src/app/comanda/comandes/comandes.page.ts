@@ -22,10 +22,6 @@ export class ComandesPage {
   missatge = '';
 
   constructor(){
-    effect(() => {
-      console.log(this.comandes());
-
-    });
     this.missatgeBuit();
   }
 

@@ -72,7 +72,6 @@ export class IniciProductePage {
           this.finished = true;
         }
       },
-      error: (error) => console.log(error)
     });
   }
 

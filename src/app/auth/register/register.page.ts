@@ -118,7 +118,6 @@ export class RegisterPage  {
             position: 'middle',
             message: Object.values(error.error.errors).join('\n'),
           })).present();
-          console.log(error.error.errors);
         }
 
       });

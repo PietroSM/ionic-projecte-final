@@ -10,7 +10,6 @@ export const productesResolver: ResolveFn<Producte> = (route) => {
   return producteService.getProducte(route.url[1].path)
     .pipe(
       catchError((error) => {
-        console.log(error.error.error);
         return EMPTY;
       })
     );
