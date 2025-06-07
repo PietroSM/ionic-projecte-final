@@ -25,10 +25,12 @@
 
   @if (data()) {
     @for (producte of productes(); track producte.id){
-      <app-producte-card
-      [producte]="producte">
-  
-      </app-producte-card>
+      @if(producte.stock > 0) {
+        <app-producte-card
+        [producte]="producte">
+    
+        </app-producte-card>
+      }
     }
   
     <ion-infinite-scroll
