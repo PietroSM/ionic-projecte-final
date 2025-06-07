@@ -9,6 +9,7 @@ import { ModalAfegirProductePage } from '../modal-afegir-producte/modal-afegir-p
 import { CistellaService } from 'src/app/services/cistella.service';
 import { XatService } from 'src/app/services/xat.service';
 import { RouterLink } from '@angular/router';
+import { Producte } from 'src/app/interfaces/producte';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class DetallsProductePage{
 
 
   iconEstacio = signal<string>("");
+  estaIni = true;
+  producte = signal<Producte | null>(null);
   
 
   id = input.required<string>();
@@ -44,13 +47,14 @@ export class DetallsProductePage{
 
   }
 
-  productesResource = rxResource({
-    request: () => this.id(),
-    loader: ({request: id}) => this.#producteService.getProducte(id)
-  });
-
-  producte = computed(() => this.productesResource.value());
-
+  ionViewWillEnter() {
+    this.#producteService.getProducte(this.id())
+    .subscribe({
+      next: (producte) => {
+        this.producte.set(producte);
+      }
+    })
+  }
 
 
   getIconEstacio(temporada: string){
