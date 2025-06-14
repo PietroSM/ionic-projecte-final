@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
 
   <ion-card class="card-general">
-    @if (this.cistella()) {
+    @if (this.cistella() && this.cistella()?.idCistella) {
       <ion-list>
         <ion-grid>
           <ion-row>

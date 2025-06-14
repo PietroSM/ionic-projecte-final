@@ -38,6 +38,7 @@ export class CistellaPagePage {
     this.#cistellaService.deleteProducteCistella(id)
       .subscribe({
         next: () => {
+          console.log("hola");
           this.#cistellaService.getCistella()
           .subscribe({
             next: (resultat) => {
