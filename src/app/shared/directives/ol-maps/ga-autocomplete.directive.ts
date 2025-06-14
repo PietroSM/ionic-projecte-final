@@ -1,4 +1,4 @@
-import { Directive, inject, ElementRef, output, afterNextRender, input } from "@angular/core";
+import { Directive, inject, ElementRef, output, afterNextRender, input, effect } from "@angular/core";
 import { GeocoderAutocomplete } from "@geoapify/geocoder-autocomplete";
 import { SearchResult } from "src/app/interfaces/search-result";
 
@@ -50,6 +50,15 @@ export class GaAutocompleteDirective {
         });
       });
     });
+
+    effect(() => {
+      const currentValue = this.value();
+      if (this.#autoComplete && currentValue) {
+        this.#autoComplete.setValue(currentValue);
+      }
+    });
+
+
   }
 
 }

@@ -23,7 +23,7 @@ export class PerfilFormPage{
   #toastCtrl = inject(ToastController);
   #nav = inject(NavController);
 
-  adresa = signal<string>("");
+  address = signal<string>("");
   
   perfilResource = rxResource({
     loader: () => this.#perfilService.getPerfil()
@@ -46,12 +46,13 @@ export class PerfilFormPage{
   constructor() { 
     effect(() => {
       if(this.usuari()){
+        console.log(this.usuari());
         this.editUsuari.get('nom')?.setValue(this.usuari()!.nom);
         this.editUsuari.get('cognom')?.setValue(this.usuari()!.cognom);
         this.editUsuari.get('correu')?.setValue(this.usuari()!.correu);
         this.editUsuari.get('lat')?.setValue(this.usuari()!.lat);
         this.editUsuari.get('lng')?.setValue(this.usuari()!.lng);
-        this.adresa.set(this.usuari()?.adresa || '');
+        this.address.set(this.usuari()?.adresa!);
 
 
       }
@@ -63,7 +64,7 @@ export class PerfilFormPage{
   changePlace(result: SearchResult) {
     this.editUsuari.get('lat')?.setValue(result.coordinates[0]);
     this.editUsuari.get('lng')?.setValue(result.coordinates[1]);
-    this.adresa.set(result.address);
+    this.address.set(result.address);
   }
 
 
@@ -77,7 +78,7 @@ export class PerfilFormPage{
       correu: this.editUsuari.getRawValue().correu,
       lat: this.editUsuari.getRawValue().lat,
       lng: this.editUsuari.getRawValue().lng,
-      adresa: this.adresa()
+      adresa: this.address()
     };
 
 
