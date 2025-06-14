@@ -43,6 +43,8 @@ export class IniciProductePage {
   
   
   reloadProductes(refresher?: IonRefresher){
+    this.finished = false;
+    this.contador = 2;
     this.#productesService.getProductes(1,this.search, this.temporada)
     .subscribe({
       next: (productes) => {

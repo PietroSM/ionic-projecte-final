@@ -93,7 +93,8 @@ export class DetallsProductePage{
                     position: 'bottom',
                     message: 'Producte esborrat corractament',
                   })).present();
-                  this.#nav.navigateRoot(['/home/inici']);
+                  this.#nav.navigateRoot(['/productes-venda']);
+                  // this.#nav.back();
                 },
                 error: async (error) => {
                   (await this.#toastCtrl.create({
